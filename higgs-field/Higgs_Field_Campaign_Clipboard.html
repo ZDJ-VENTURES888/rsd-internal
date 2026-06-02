@@ -1,0 +1,1080 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Higgs Field — Ad Campaign Clipboard</title>
+<style>
+  :root {
+    --navy: #0B2545;
+    --gold: #C9A961;
+    --off: #F0EDE6;
+    --light: #F7F5F1;
+    --mid: #E8E4DA;
+    --text: #222222;
+    --muted: #666666;
+    --green: #2E7D52;
+    --blue: #1A4A8A;
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body {
+    font-family: 'Segoe UI', Arial, sans-serif;
+    background: var(--navy);
+    color: var(--text);
+    min-height: 100vh;
+  }
+
+  /* HEADER */
+  .site-header {
+    background: var(--navy);
+    padding: 28px 40px 20px;
+    border-bottom: 3px solid var(--gold);
+    position: sticky;
+    top: 0;
+    z-index: 100;
+  }
+  .header-inner {
+    max-width: 1200px;
+    margin: 0 auto;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 20px;
+    flex-wrap: wrap;
+  }
+  .brand { display: flex; flex-direction: column; gap: 2px; }
+  .brand-name { color: #fff; font-size: 22px; font-weight: 700; letter-spacing: 2px; }
+  .brand-sub { color: var(--gold); font-size: 12px; letter-spacing: 1.5px; text-transform: uppercase; }
+  .header-search {
+    flex: 1; max-width: 360px;
+    padding: 10px 16px;
+    border: 1px solid rgba(201,169,97,0.4);
+    border-radius: 6px;
+    background: rgba(255,255,255,0.05);
+    color: #fff;
+    font-size: 14px;
+    outline: none;
+    transition: border-color 0.2s;
+  }
+  .header-search::placeholder { color: rgba(255,255,255,0.4); }
+  .header-search:focus { border-color: var(--gold); }
+  .copy-count {
+    color: rgba(255,255,255,0.5);
+    font-size: 12px;
+    white-space: nowrap;
+  }
+
+  /* NAV TABS */
+  .nav-tabs {
+    background: rgba(255,255,255,0.04);
+    border-bottom: 1px solid rgba(201,169,97,0.2);
+    padding: 0 40px;
+    overflow-x: auto;
+  }
+  .nav-inner {
+    max-width: 1200px;
+    margin: 0 auto;
+    display: flex;
+    gap: 0;
+  }
+  .tab-btn {
+    background: none;
+    border: none;
+    color: rgba(255,255,255,0.5);
+    padding: 14px 20px;
+    font-size: 13px;
+    font-weight: 600;
+    letter-spacing: 0.5px;
+    cursor: pointer;
+    border-bottom: 3px solid transparent;
+    transition: all 0.2s;
+    white-space: nowrap;
+    text-transform: uppercase;
+  }
+  .tab-btn:hover { color: rgba(255,255,255,0.85); }
+  .tab-btn.active { color: var(--gold); border-bottom-color: var(--gold); }
+
+  /* MAIN CONTENT */
+  .main {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 32px 40px 60px;
+  }
+
+  /* SECTIONS */
+  .section { display: none; }
+  .section.active { display: block; }
+
+  .section-header {
+    margin-bottom: 28px;
+    padding-bottom: 16px;
+    border-bottom: 1px solid rgba(201,169,97,0.3);
+  }
+  .section-title {
+    color: #fff;
+    font-size: 24px;
+    font-weight: 700;
+    margin-bottom: 6px;
+  }
+  .section-desc { color: rgba(255,255,255,0.55); font-size: 14px; line-height: 1.5; }
+
+  /* CLIP CARDS */
+  .clip-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(520px, 1fr));
+    gap: 16px;
+  }
+  .clip-grid.single { grid-template-columns: 1fr; }
+
+  .clip-card {
+    background: #fff;
+    border-radius: 10px;
+    overflow: hidden;
+    border: 1px solid var(--mid);
+    transition: box-shadow 0.2s, transform 0.15s;
+  }
+  .clip-card:hover { box-shadow: 0 4px 20px rgba(0,0,0,0.15); transform: translateY(-1px); }
+  .clip-card.hidden { display: none; }
+
+  .card-tag {
+    background: var(--navy);
+    color: var(--gold);
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    padding: 6px 14px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+  .card-platform {
+    color: rgba(255,255,255,0.4);
+    font-size: 10px;
+    font-weight: 400;
+    letter-spacing: 0.5px;
+  }
+
+  .card-body { padding: 16px; }
+  .card-label {
+    font-size: 10px;
+    font-weight: 700;
+    color: var(--muted);
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    margin-bottom: 4px;
+  }
+  .card-headline {
+    font-size: 17px;
+    font-weight: 700;
+    color: var(--navy);
+    line-height: 1.3;
+    margin-bottom: 8px;
+  }
+  .card-body-text {
+    font-size: 14px;
+    color: #444;
+    line-height: 1.55;
+    margin-bottom: 10px;
+  }
+  .card-cta {
+    font-size: 12px;
+    font-weight: 700;
+    color: var(--gold);
+    text-transform: uppercase;
+    letter-spacing: 0.8px;
+    margin-bottom: 12px;
+  }
+  .card-prompt {
+    font-size: 13px;
+    color: #333;
+    line-height: 1.6;
+    font-style: italic;
+    background: var(--light);
+    padding: 12px;
+    border-radius: 6px;
+    border-left: 3px solid var(--gold);
+    margin-bottom: 10px;
+  }
+
+  .card-footer {
+    padding: 10px 16px;
+    border-top: 1px solid var(--mid);
+    display: flex;
+    gap: 8px;
+    flex-wrap: wrap;
+  }
+  .copy-btn {
+    flex: 1;
+    min-width: 120px;
+    padding: 8px 14px;
+    border-radius: 6px;
+    border: none;
+    cursor: pointer;
+    font-size: 12px;
+    font-weight: 700;
+    letter-spacing: 0.5px;
+    transition: all 0.18s;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 6px;
+  }
+  .copy-btn.primary { background: var(--navy); color: #fff; }
+  .copy-btn.primary:hover { background: #1a3a65; }
+  .copy-btn.secondary { background: var(--off); color: var(--navy); border: 1px solid var(--mid); }
+  .copy-btn.secondary:hover { background: var(--mid); }
+  .copy-btn.success { background: var(--green); color: #fff; }
+
+  /* SESSION TRANSCRIPT QUOTES */
+  .source-quote {
+    background: rgba(201,169,97,0.08);
+    border: 1px solid rgba(201,169,97,0.3);
+    border-left: 4px solid var(--gold);
+    border-radius: 8px;
+    padding: 16px 20px;
+    margin-bottom: 12px;
+  }
+  .source-quote p {
+    color: rgba(255,255,255,0.85);
+    font-size: 16px;
+    font-style: italic;
+    line-height: 1.5;
+    margin-bottom: 6px;
+  }
+  .source-quote .attr { color: var(--gold); font-size: 11px; font-weight: 700; letter-spacing: 1px; }
+
+  /* STORY ARC VISUAL */
+  .arc-row {
+    display: flex;
+    gap: 16px;
+    margin-bottom: 24px;
+  }
+  .arc-beat {
+    flex: 1;
+    background: #fff;
+    border-radius: 10px;
+    padding: 20px;
+    border-top: 4px solid var(--navy);
+    position: relative;
+  }
+  .arc-beat.b1 { border-top-color: #C9A961; }
+  .arc-beat.b2 { border-top-color: #0B4580; }
+  .arc-beat.b3 { border-top-color: #2E7D52; }
+  .beat-num {
+    font-size: 10px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 1.5px;
+    color: var(--muted);
+    margin-bottom: 6px;
+  }
+  .beat-title {
+    font-size: 18px;
+    font-weight: 800;
+    color: var(--navy);
+    margin-bottom: 8px;
+  }
+  .beat-time {
+    display: inline-block;
+    background: var(--off);
+    color: var(--navy);
+    font-size: 11px;
+    font-weight: 700;
+    padding: 2px 8px;
+    border-radius: 100px;
+    margin-bottom: 10px;
+  }
+  .beat-desc { font-size: 13px; color: #444; line-height: 1.5; }
+
+  /* PLATFORM TABLE */
+  .platform-table {
+    width: 100%;
+    border-collapse: collapse;
+    background: #fff;
+    border-radius: 10px;
+    overflow: hidden;
+    margin-bottom: 28px;
+  }
+  .platform-table th {
+    background: var(--navy);
+    color: var(--gold);
+    font-size: 11px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    padding: 12px 16px;
+    text-align: left;
+  }
+  .platform-table td {
+    padding: 12px 16px;
+    font-size: 13px;
+    color: #333;
+    border-bottom: 1px solid var(--mid);
+    vertical-align: top;
+  }
+  .platform-table tr:last-child td { border-bottom: none; }
+  .platform-table tr:hover td { background: var(--light); }
+
+  /* CHECKLIST */
+  .checklist { list-style: none; }
+  .checklist li {
+    display: flex;
+    align-items: flex-start;
+    gap: 12px;
+    padding: 10px 0;
+    border-bottom: 1px solid rgba(255,255,255,0.06);
+    color: rgba(255,255,255,0.8);
+    font-size: 14px;
+    line-height: 1.4;
+  }
+  .checklist li:last-child { border-bottom: none; }
+  .check-box {
+    width: 20px;
+    height: 20px;
+    min-width: 20px;
+    border: 2px solid rgba(201,169,97,0.5);
+    border-radius: 4px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.15s;
+  }
+  .check-box:hover { border-color: var(--gold); background: rgba(201,169,97,0.1); }
+  .check-box.checked { background: var(--green); border-color: var(--green); }
+  .check-box.checked::after { content: "✓"; color: white; font-size: 12px; font-weight: 700; }
+
+  /* TOAST */
+  .toast {
+    position: fixed;
+    bottom: 28px;
+    right: 28px;
+    background: var(--navy);
+    color: #fff;
+    padding: 12px 20px;
+    border-radius: 8px;
+    border-left: 4px solid var(--gold);
+    font-size: 14px;
+    font-weight: 600;
+    box-shadow: 0 4px 20px rgba(0,0,0,0.3);
+    transform: translateY(80px);
+    opacity: 0;
+    transition: all 0.25s;
+    z-index: 999;
+  }
+  .toast.show { transform: translateY(0); opacity: 1; }
+
+  @media (max-width: 700px) {
+    .site-header { padding: 20px; }
+    .nav-tabs { padding: 0 12px; }
+    .main { padding: 20px; }
+    .clip-grid { grid-template-columns: 1fr; }
+    .arc-row { flex-direction: column; }
+    .tab-btn { padding: 12px 12px; font-size: 11px; }
+  }
+</style>
+</head>
+<body>
+
+<header class="site-header">
+  <div class="header-inner">
+    <div class="brand">
+      <div class="brand-name">HIGGS FIELD</div>
+      <div class="brand-sub">Ad Campaign Clipboard — Zack &amp; Joel · June 2026</div>
+    </div>
+    <input class="header-search" type="text" placeholder="Search copy, prompts, tags..." id="searchInput" oninput="filterCards()">
+    <div class="copy-count" id="copyCount"></div>
+  </div>
+</header>
+
+<nav class="nav-tabs">
+  <div class="nav-inner">
+    <button class="tab-btn active" onclick="showTab('source', this)">Session Source</button>
+    <button class="tab-btn" onclick="showTab('backyard', this)">Backyard Copy</button>
+    <button class="tab-btn" onclick="showTab('lower', this)">Lower Level Copy</button>
+    <button class="tab-btn" onclick="showTab('images', this)">Image Prompts</button>
+    <button class="tab-btn" onclick="showTab('video', this)">Video Arc</button>
+    <button class="tab-btn" onclick="showTab('platform', this)">Platform Guide</button>
+    <button class="tab-btn" onclick="showTab('checklist', this)">Batch Checklist</button>
+  </div>
+</nav>
+
+<main class="main">
+
+  <!-- SESSION SOURCE -->
+  <div class="section active" id="tab-source">
+    <div class="section-header">
+      <div class="section-title">Session Source Copy</div>
+      <div class="section-desc">Direct lines from the Zack & Joel strategy session — your raw creative seeds. These are the roots of every ad variation.</div>
+    </div>
+    <div style="margin-bottom:28px">
+      <div class="source-quote clip-card-item" data-text="You shouldn't need to get away from your home this year for vacation.">
+        <p>You shouldn't need to get away from your home this year for vacation.</p>
+        <div class="attr">SESSION LINE — BACKYARD THEME</div>
+        <button class="copy-btn primary" style="margin-top:10px;max-width:200px" onclick="copyText('You shouldn\'t need to get away from your home this year for vacation.')">Copy Line</button>
+      </div>
+      <div class="source-quote clip-card-item" data-text="What if your vacation was just two steps out into your backyard?">
+        <p>What if your vacation was just two steps out into your backyard?</p>
+        <div class="attr">SESSION LINE — BACKYARD THEME</div>
+        <button class="copy-btn primary" style="margin-top:10px;max-width:200px" onclick="copyText('What if your vacation was just two steps out into your backyard?')">Copy Line</button>
+      </div>
+      <div class="source-quote clip-card-item" data-text="Walk out to your vacation.">
+        <p>Walk out to your vacation.</p>
+        <div class="attr">SESSION LINE — BACKYARD THEME</div>
+        <button class="copy-btn primary" style="margin-top:10px;max-width:200px" onclick="copyText('Walk out to your vacation.')">Copy Line</button>
+      </div>
+      <div class="source-quote clip-card-item" data-text="No waiting for TSA pre-check to get to your vacation.">
+        <p>No waiting for TSA pre-check to get to your vacation.</p>
+        <div class="attr">SESSION LINE — BACKYARD THEME</div>
+        <button class="copy-btn primary" style="margin-top:10px;max-width:200px" onclick="copyText('No waiting for TSA pre-check to get to your vacation.')">Copy Line</button>
+      </div>
+      <div class="source-quote clip-card-item" data-text="Why trip over a trip when you can just step outside in your own backyard?">
+        <p>Why trip over a trip when you can just step outside in your own backyard?</p>
+        <div class="attr">SESSION LINE — BACKYARD THEME (ALLITERATION)</div>
+        <button class="copy-btn primary" style="margin-top:10px;max-width:200px" onclick="copyText('Why trip over a trip when you can just step outside in your own backyard?')">Copy Line</button>
+      </div>
+      <div class="source-quote clip-card-item" data-text="The foundation of any good family is a space to call your own.">
+        <p>The foundation of any good family is a space to call your own.</p>
+        <div class="attr">SESSION LINE — LOWER LEVEL THEME</div>
+        <button class="copy-btn primary" style="margin-top:10px;max-width:200px" onclick="copyText('The foundation of any good family is a space to call your own.')">Copy Line</button>
+      </div>
+      <div class="source-quote clip-card-item" data-text="Keep the heat relaxed with style.">
+        <p>Keep the heat relaxed with style.</p>
+        <div class="attr">SESSION LINE — LOWER LEVEL / SEASONAL</div>
+        <button class="copy-btn primary" style="margin-top:10px;max-width:200px" onclick="copyText('Keep the heat relaxed with style.')">Copy Line</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- BACKYARD COPY -->
+  <div class="section" id="tab-backyard">
+    <div class="section-header">
+      <div class="section-title">Backyard Retreat — Ad Copy Suite</div>
+      <div class="section-desc">Primary hooks, family/legacy variations, and short-form story overlays. Less text on screen — imagery does the emotional lifting.</div>
+    </div>
+    <div class="clip-grid" id="backyardGrid">
+
+      <div class="clip-card clip-card-item" data-text="Your vacation is two steps away. Stop booking flights to find your peace. It's already in your backyard — you just haven't built it yet. CTA: See What's Possible">
+        <div class="card-tag">A1 — Primary Hook <span class="card-platform">Facebook Feed · Instagram Feed</span></div>
+        <div class="card-body">
+          <div class="card-label">Headline</div>
+          <div class="card-headline">Your vacation is two steps away.</div>
+          <div class="card-label" style="margin-top:10px">Body</div>
+          <div class="card-body-text">Stop booking flights to find your peace. It's already in your backyard — you just haven't built it yet.</div>
+          <div class="card-cta">CTA: See What's Possible</div>
+        </div>
+        <div class="card-footer">
+          <button class="copy-btn primary" onclick="copyCard(this, 'Your vacation is two steps away.')">Copy Headline</button>
+          <button class="copy-btn secondary" onclick="copyCard(this, 'Stop booking flights to find your peace. It\'s already in your backyard — you just haven\'t built it yet.')">Copy Body</button>
+          <button class="copy-btn secondary" onclick="copyCard(this, 'Your vacation is two steps away.\n\nStop booking flights to find your peace. It\'s already in your backyard — you just haven\'t built it yet.\n\nSee What\'s Possible →')">Copy All</button>
+        </div>
+      </div>
+
+      <div class="clip-card clip-card-item" data-text="You shouldn't need to get away from your own home. What if this summer, you never had to leave? No TSA. No delays. No overpriced resorts. Just your backyard, reimagined. CTA: Start the Conversation">
+        <div class="card-tag">A2 — Primary Hook <span class="card-platform">Facebook Feed · Google Display</span></div>
+        <div class="card-body">
+          <div class="card-label">Headline</div>
+          <div class="card-headline">You shouldn't need to get away from your own home.</div>
+          <div class="card-label" style="margin-top:10px">Body</div>
+          <div class="card-body-text">What if this summer, you never had to leave? No TSA. No delays. No overpriced resorts. Just your backyard, reimagined.</div>
+          <div class="card-cta">CTA: Start the Conversation</div>
+        </div>
+        <div class="card-footer">
+          <button class="copy-btn primary" onclick="copyCard(this, 'You shouldn\'t need to get away from your own home.')">Copy Headline</button>
+          <button class="copy-btn secondary" onclick="copyCard(this, 'What if this summer, you never had to leave? No TSA. No delays. No overpriced resorts. Just your backyard, reimagined.')">Copy Body</button>
+          <button class="copy-btn secondary" onclick="copyCard(this, 'You shouldn\'t need to get away from your own home.\n\nWhat if this summer, you never had to leave? No TSA. No delays. No overpriced resorts. Just your backyard, reimagined.\n\nStart the Conversation →')">Copy All</button>
+        </div>
+      </div>
+
+      <div class="clip-card clip-card-item" data-text="Walk out to your vacation. Most families spend thousands to find a feeling they could have built at home. See what Higgs Field homeowners already know. CTA: View Dream Builds">
+        <div class="card-tag">A3 — Primary Hook <span class="card-platform">Facebook · Instagram</span></div>
+        <div class="card-body">
+          <div class="card-label">Headline</div>
+          <div class="card-headline">Walk out to your vacation.</div>
+          <div class="card-label" style="margin-top:10px">Body</div>
+          <div class="card-body-text">Most families spend thousands to find a feeling they could have built at home. See what Higgs Field homeowners already know.</div>
+          <div class="card-cta">CTA: View Dream Builds</div>
+        </div>
+        <div class="card-footer">
+          <button class="copy-btn primary" onclick="copyCard(this, 'Walk out to your vacation.')">Copy Headline</button>
+          <button class="copy-btn secondary" onclick="copyCard(this, 'Most families spend thousands to find a feeling they could have built at home. See what Higgs Field homeowners already know.')">Copy Body</button>
+          <button class="copy-btn secondary" onclick="copyCard(this, 'Walk out to your vacation.\n\nMost families spend thousands to find a feeling they could have built at home. See what Higgs Field homeowners already know.\n\nView Dream Builds →')">Copy All</button>
+        </div>
+      </div>
+
+      <div class="clip-card clip-card-item" data-text="Why trip over a trip? You've been planning escapes. This year, build the escape. One backyard project can redefine what home feels like for your entire family. CTA: Get Your Free Assessment">
+        <div class="card-tag">A4 — Primary Hook (Alliteration) <span class="card-platform">Facebook Feed · Retargeting</span></div>
+        <div class="card-body">
+          <div class="card-label">Headline</div>
+          <div class="card-headline">Why trip over a trip?</div>
+          <div class="card-label" style="margin-top:10px">Body</div>
+          <div class="card-body-text">You've been planning escapes. This year, build the escape. One backyard project can redefine what home feels like for your entire family.</div>
+          <div class="card-cta">CTA: Get Your Free Assessment</div>
+        </div>
+        <div class="card-footer">
+          <button class="copy-btn primary" onclick="copyCard(this, 'Why trip over a trip?')">Copy Headline</button>
+          <button class="copy-btn secondary" onclick="copyCard(this, 'You\'ve been planning escapes. This year, build the escape. One backyard project can redefine what home feels like for your entire family.')">Copy Body</button>
+          <button class="copy-btn secondary" onclick="copyCard(this, 'Why trip over a trip?\n\nYou\'ve been planning escapes. This year, build the escape. One backyard project can redefine what home feels like for your entire family.\n\nGet Your Free Assessment →')">Copy All</button>
+        </div>
+      </div>
+
+      <div class="clip-card clip-card-item" data-text="The best vacations don't require a suitcase. Imagine stepping outside — coffee in hand, morning light, water feature running — and feeling exactly like you planned to feel on vacation. That's the build. CTA: Book a Discovery Call">
+        <div class="card-tag">A5 — Primary Hook <span class="card-platform">Instagram Feed · Facebook</span></div>
+        <div class="card-body">
+          <div class="card-label">Headline</div>
+          <div class="card-headline">The best vacations don't require a suitcase.</div>
+          <div class="card-label" style="margin-top:10px">Body</div>
+          <div class="card-body-text">Imagine stepping outside — coffee in hand, morning light, water feature running — and feeling exactly like you planned to feel on vacation. That's the build.</div>
+          <div class="card-cta">CTA: Book a Discovery Call</div>
+        </div>
+        <div class="card-footer">
+          <button class="copy-btn primary" onclick="copyCard(this, 'The best vacations don\'t require a suitcase.')">Copy Headline</button>
+          <button class="copy-btn secondary" onclick="copyCard(this, 'Imagine stepping outside — coffee in hand, morning light, water feature running — and feeling exactly like you planned to feel on vacation. That\'s the build.')">Copy Body</button>
+          <button class="copy-btn secondary" onclick="copyCard(this, 'The best vacations don\'t require a suitcase.\n\nImagine stepping outside — coffee in hand, morning light, water feature running — and feeling exactly like you planned to feel on vacation. That\'s the build.\n\nBook a Discovery Call →')">Copy All</button>
+        </div>
+      </div>
+
+      <div class="clip-card clip-card-item" data-text="Build a backyard your grandkids will remember. The best investment you make in your home isn't square footage inside — it's the life you create outside. Higgs Field designs spaces built for generations. CTA: Learn More">
+        <div class="card-tag">B1 — Family Legacy <span class="card-platform">Facebook Retargeting · Instagram</span></div>
+        <div class="card-body">
+          <div class="card-label">Headline</div>
+          <div class="card-headline">Build a backyard your grandkids will remember.</div>
+          <div class="card-label" style="margin-top:10px">Body</div>
+          <div class="card-body-text">The best investment you make in your home isn't square footage inside — it's the life you create outside. Higgs Field designs spaces built for generations.</div>
+          <div class="card-cta">CTA: Learn More</div>
+        </div>
+        <div class="card-footer">
+          <button class="copy-btn primary" onclick="copyCard(this, 'Build a backyard your grandkids will remember.')">Copy Headline</button>
+          <button class="copy-btn secondary" onclick="copyCard(this, 'The best investment you make in your home isn\'t square footage inside — it\'s the life you create outside. Higgs Field designs spaces built for generations.')">Copy Body</button>
+          <button class="copy-btn secondary" onclick="copyCard(this, 'Build a backyard your grandkids will remember.\n\nThe best investment you make in your home isn\'t square footage inside — it\'s the life you create outside. Higgs Field designs spaces built for generations.\n\nLearn More →')">Copy All</button>
+        </div>
+      </div>
+
+      <div class="clip-card clip-card-item" data-text="Design today for the life you'll want at 70. Aging in place starts with the spaces that keep you active, social, and at home. A thoughtfully built backyard is where that plan begins. CTA: See Our Approach">
+        <div class="card-tag">B3 — Aging in Place <span class="card-platform">Facebook · Google Display</span></div>
+        <div class="card-body">
+          <div class="card-label">Headline</div>
+          <div class="card-headline">Design today for the life you'll want at 70.</div>
+          <div class="card-label" style="margin-top:10px">Body</div>
+          <div class="card-body-text">Aging in place starts with the spaces that keep you active, social, and at home. A thoughtfully built backyard is where that plan begins.</div>
+          <div class="card-cta">CTA: See Our Approach</div>
+        </div>
+        <div class="card-footer">
+          <button class="copy-btn primary" onclick="copyCard(this, 'Design today for the life you\'ll want at 70.')">Copy Headline</button>
+          <button class="copy-btn secondary" onclick="copyCard(this, 'Aging in place starts with the spaces that keep you active, social, and at home. A thoughtfully built backyard is where that plan begins.')">Copy Body</button>
+          <button class="copy-btn secondary" onclick="copyCard(this, 'Design today for the life you\'ll want at 70.\n\nAging in place starts with the spaces that keep you active, social, and at home. A thoughtfully built backyard is where that plan begins.\n\nSee Our Approach →')">Copy All</button>
+        </div>
+      </div>
+
+      <div class="clip-card clip-card-item" data-text="Two steps from your door.">
+        <div class="card-tag">C — Story Overlay <span class="card-platform">Instagram Stories · Reels Overlay</span></div>
+        <div class="card-body">
+          <div class="card-label">One-Line Overlay — Copy & Paste Direct to Video</div>
+          <div class="card-headline" style="font-size:22px">Two steps from your door.</div>
+        </div>
+        <div class="card-footer">
+          <button class="copy-btn primary" onclick="copyCard(this, 'Two steps from your door.')">Copy Text</button>
+        </div>
+      </div>
+
+      <div class="clip-card clip-card-item" data-text="Your vacation is already home.">
+        <div class="card-tag">C — Story Overlay <span class="card-platform">Instagram Stories · Reels</span></div>
+        <div class="card-body">
+          <div class="card-label">One-Line Overlay</div>
+          <div class="card-headline" style="font-size:22px">Your vacation is already home.</div>
+        </div>
+        <div class="card-footer">
+          <button class="copy-btn primary" onclick="copyCard(this, 'Your vacation is already home.')">Copy Text</button>
+        </div>
+      </div>
+
+      <div class="clip-card clip-card-item" data-text="No TSA. No delays. Just your backyard.">
+        <div class="card-tag">C — Story Overlay <span class="card-platform">Facebook Stories · Reels</span></div>
+        <div class="card-body">
+          <div class="card-label">One-Line Overlay</div>
+          <div class="card-headline" style="font-size:22px">No TSA. No delays. Just your backyard.</div>
+        </div>
+        <div class="card-footer">
+          <button class="copy-btn primary" onclick="copyCard(this, 'No TSA. No delays. Just your backyard.')">Copy Text</button>
+        </div>
+      </div>
+
+      <div class="clip-card clip-card-item" data-text="Stop planning the escape. Build it.">
+        <div class="card-tag">C — Story Overlay <span class="card-platform">Reels · YouTube End Card</span></div>
+        <div class="card-body">
+          <div class="card-label">One-Line Outro CTA</div>
+          <div class="card-headline" style="font-size:22px">Stop planning the escape. Build it.</div>
+        </div>
+        <div class="card-footer">
+          <button class="copy-btn primary" onclick="copyCard(this, 'Stop planning the escape. Build it.')">Copy Text</button>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- LOWER LEVEL COPY -->
+  <div class="section" id="tab-lower">
+    <div class="section-header">
+      <div class="section-title">Lower Level / Foundation — Ad Copy Suite</div>
+      <div class="section-desc">Basement transformations positioned as family investments, seasonal retreats, and aging-in-place infrastructure. Foundation as metaphor runs throughout.</div>
+    </div>
+    <div class="clip-grid" id="lowerGrid">
+
+      <div class="clip-card clip-card-item" data-text="The foundation of any good family is a space to call your own. Your lower level is the most underbuilt square footage in your home. Higgs Field turns it into the room your family actually gathers in. CTA: See The Possibilities">
+        <div class="card-tag">L1 — Primary Hook <span class="card-platform">Facebook Feed · Google Display</span></div>
+        <div class="card-body">
+          <div class="card-label">Headline</div>
+          <div class="card-headline">The foundation of any good family is a space to call your own.</div>
+          <div class="card-label" style="margin-top:10px">Body</div>
+          <div class="card-body-text">Your lower level is the most underbuilt square footage in your home. Higgs Field turns it into the room your family actually gathers in.</div>
+          <div class="card-cta">CTA: See The Possibilities</div>
+        </div>
+        <div class="card-footer">
+          <button class="copy-btn primary" onclick="copyCard(this, 'The foundation of any good family is a space to call your own.')">Copy Headline</button>
+          <button class="copy-btn secondary" onclick="copyCard(this, 'Your lower level is the most underbuilt square footage in your home. Higgs Field turns it into the room your family actually gathers in.')">Copy Body</button>
+          <button class="copy-btn secondary" onclick="copyCard(this, 'The foundation of any good family is a space to call your own.\n\nYour lower level is the most underbuilt square footage in your home. Higgs Field turns it into the room your family actually gathers in.\n\nSee The Possibilities →')">Copy All</button>
+        </div>
+      </div>
+
+      <div class="clip-card clip-card-item" data-text="Keep cool this summer — without leaving home. When the heat wave hits, your basement becomes your best asset. We design lower levels that feel like a reward, not an afterthought. CTA: Get Inspired">
+        <div class="card-tag">L2 — Seasonal Hook <span class="card-platform">Facebook · Instagram Summer Campaign</span></div>
+        <div class="card-body">
+          <div class="card-label">Headline</div>
+          <div class="card-headline">Keep cool this summer — without leaving home.</div>
+          <div class="card-label" style="margin-top:10px">Body</div>
+          <div class="card-body-text">When the heat wave hits, your basement becomes your best asset. We design lower levels that feel like a reward, not an afterthought.</div>
+          <div class="card-cta">CTA: Get Inspired</div>
+        </div>
+        <div class="card-footer">
+          <button class="copy-btn primary" onclick="copyCard(this, 'Keep cool this summer — without leaving home.')">Copy Headline</button>
+          <button class="copy-btn secondary" onclick="copyCard(this, 'When the heat wave hits, your basement becomes your best asset. We design lower levels that feel like a reward, not an afterthought.')">Copy Body</button>
+          <button class="copy-btn secondary" onclick="copyCard(this, 'Keep cool this summer — without leaving home.\n\nWhen the heat wave hits, your basement becomes your best asset. We design lower levels that feel like a reward, not an afterthought.\n\nGet Inspired →')">Copy All</button>
+        </div>
+      </div>
+
+      <div class="clip-card clip-card-item" data-text="The family movie theater you keep talking about. Let's build it. You've pinned it. You've discussed it. Now it's time to make the lower level the room everyone wants to be in. CTA: Book a Consult">
+        <div class="card-tag">L3 — Dream Project Hook <span class="card-platform">Facebook Retargeting · Instagram</span></div>
+        <div class="card-body">
+          <div class="card-label">Headline</div>
+          <div class="card-headline">The family movie theater you keep talking about. Let's build it.</div>
+          <div class="card-label" style="margin-top:10px">Body</div>
+          <div class="card-body-text">You've pinned it. You've discussed it. Now it's time to make the lower level the room everyone wants to be in.</div>
+          <div class="card-cta">CTA: Book a Consult</div>
+        </div>
+        <div class="card-footer">
+          <button class="copy-btn primary" onclick="copyCard(this, 'The family movie theater you keep talking about. Let\'s build it.')">Copy Headline</button>
+          <button class="copy-btn secondary" onclick="copyCard(this, 'You\'ve pinned it. You\'ve discussed it. Now it\'s time to make the lower level the room everyone wants to be in.')">Copy Body</button>
+          <button class="copy-btn secondary" onclick="copyCard(this, 'The family movie theater you keep talking about. Let\'s build it.\n\nYou\'ve pinned it. You\'ve discussed it. Now it\'s time to make the lower level the room everyone wants to be in.\n\nBook a Consult →')">Copy All</button>
+        </div>
+      </div>
+
+      <div class="clip-card clip-card-item" data-text="Most homeowners overlook 600 square feet of potential. Your basement isn't storage. It's a second home waiting to happen. Walk-in style, in-home theater, game room, guest suite — Higgs Field does it right. CTA: Explore Builds">
+        <div class="card-tag">L5 — Awareness Hook <span class="card-platform">Google Display · YouTube Pre-Roll</span></div>
+        <div class="card-body">
+          <div class="card-label">Headline</div>
+          <div class="card-headline">Most homeowners overlook 600 square feet of potential. You don't have to.</div>
+          <div class="card-label" style="margin-top:10px">Body</div>
+          <div class="card-body-text">Your basement isn't storage. It's a second home waiting to happen. Walk-in style, in-home theater, game room, guest suite — Higgs Field does it right.</div>
+          <div class="card-cta">CTA: Explore Builds</div>
+        </div>
+        <div class="card-footer">
+          <button class="copy-btn primary" onclick="copyCard(this, 'Most homeowners overlook 600 square feet of potential. You don\'t have to.')">Copy Headline</button>
+          <button class="copy-btn secondary" onclick="copyCard(this, 'Your basement isn\'t storage. It\'s a second home waiting to happen. Walk-in style, in-home theater, game room, guest suite — Higgs Field does it right.')">Copy Body</button>
+          <button class="copy-btn secondary" onclick="copyCard(this, 'Most homeowners overlook 600 square feet of potential. You don\'t have to.\n\nYour basement isn\'t storage. It\'s a second home waiting to happen. Walk-in style, in-home theater, game room, guest suite — Higgs Field does it right.\n\nExplore Builds →')">Copy All</button>
+        </div>
+      </div>
+
+      <div class="clip-card clip-card-item" data-text="A lower level designed for every chapter of your life. Handrails, wide entries, accessible bathrooms — built beautifully, not clinically. Higgs Field designs lower levels that adapt as your family does. CTA: Learn About Aging in Place Builds">
+        <div class="card-tag">LA1 — Aging in Place <span class="card-platform">Facebook · Google 55+ Audience</span></div>
+        <div class="card-body">
+          <div class="card-label">Headline</div>
+          <div class="card-headline">A lower level designed for every chapter of your life.</div>
+          <div class="card-label" style="margin-top:10px">Body</div>
+          <div class="card-body-text">Handrails, wide entries, accessible bathrooms — built beautifully, not clinically. Higgs Field designs lower levels that adapt as your family does.</div>
+          <div class="card-cta">CTA: Learn About Aging in Place Builds</div>
+        </div>
+        <div class="card-footer">
+          <button class="copy-btn primary" onclick="copyCard(this, 'A lower level designed for every chapter of your life.')">Copy Headline</button>
+          <button class="copy-btn secondary" onclick="copyCard(this, 'Handrails, wide entries, accessible bathrooms — built beautifully, not clinically. Higgs Field designs lower levels that adapt as your family does.')">Copy Body</button>
+          <button class="copy-btn secondary" onclick="copyCard(this, 'A lower level designed for every chapter of your life.\n\nHandrails, wide entries, accessible bathrooms — built beautifully, not clinically. Higgs Field designs lower levels that adapt as your family does.\n\nLearn About Aging in Place Builds →')">Copy All</button>
+        </div>
+      </div>
+
+      <div class="clip-card clip-card-item" data-text="Your best room is underground.">
+        <div class="card-tag">C — Story Overlay <span class="card-platform">Instagram Stories · Reels</span></div>
+        <div class="card-body">
+          <div class="card-label">One-Line Overlay</div>
+          <div class="card-headline" style="font-size:22px">Your best room is underground.</div>
+        </div>
+        <div class="card-footer">
+          <button class="copy-btn primary" onclick="copyCard(this, 'Your best room is underground.')">Copy Text</button>
+        </div>
+      </div>
+
+      <div class="clip-card clip-card-item" data-text="Lower level. Higher living.">
+        <div class="card-tag">C — Story Overlay <span class="card-platform">Stories · End Card</span></div>
+        <div class="card-body">
+          <div class="card-label">One-Line Overlay / Tagline</div>
+          <div class="card-headline" style="font-size:22px">Lower level. Higher living.</div>
+        </div>
+        <div class="card-footer">
+          <button class="copy-btn primary" onclick="copyCard(this, 'Lower level. Higher living.')">Copy Text</button>
+        </div>
+      </div>
+
+      <div class="clip-card clip-card-item" data-text="Your best room has been waiting downstairs.">
+        <div class="card-tag">C — Story Overlay <span class="card-platform">Facebook Stories · Video End</span></div>
+        <div class="card-body">
+          <div class="card-label">One-Line Outro</div>
+          <div class="card-headline" style="font-size:22px">Your best room has been waiting downstairs.</div>
+        </div>
+        <div class="card-footer">
+          <button class="copy-btn primary" onclick="copyCard(this, 'Your best room has been waiting downstairs.')">Copy Text</button>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- IMAGE PROMPTS -->
+  <div class="section" id="tab-images">
+    <div class="section-header">
+      <div class="section-title">ChatGPT / AI Image Generation Prompts</div>
+      <div class="section-desc">Organized by Hook (curiosity, no full reveal) and Outro (dream outcome, family present). Paste directly into ChatGPT, Midjourney, or Adobe Firefly.</div>
+    </div>
+    <div class="clip-grid single" id="imageGrid">
+
+      <div style="color:rgba(255,255,255,0.6);font-size:13px;font-weight:700;text-transform:uppercase;letter-spacing:1.5px;margin-bottom:16px">BACKYARD — HOOK IMAGES (Curiosity-First)</div>
+
+      <div class="clip-card clip-card-item" data-text="Hyper-realistic photograph, golden hour, backyard edge — only a corner of a beautifully designed outdoor space is visible beyond a partially open gate. Warm bokeh, string lights barely visible, suggestion of water feature sound. Shot with 85mm prime, shallow depth of field. No people. No product text.">
+        <div class="card-tag">BH-01 — Backyard Hook <span class="card-platform">Facebook Feed · Instagram · Google Display</span></div>
+        <div class="card-body">
+          <div class="card-label">Image Prompt</div>
+          <div class="card-prompt">Hyper-realistic photograph, golden hour, backyard edge — only a corner of a beautifully designed outdoor space is visible beyond a partially open gate. Warm bokeh, string lights barely visible, suggestion of water feature sound. Shot with 85mm prime, shallow depth of field. No people. No product text.</div>
+          <div class="card-label">Tone Direction</div>
+          <div class="card-body-text" style="font-size:12px">Mysterious · Warm · Cinematic · Show the edge of something beautiful</div>
+        </div>
+        <div class="card-footer">
+          <button class="copy-btn primary" onclick="copyCard(this, 'Hyper-realistic photograph, golden hour, backyard edge — only a corner of a beautifully designed outdoor space is visible beyond a partially open gate. Warm bokeh, string lights barely visible, suggestion of water feature sound. Shot with 85mm prime, shallow depth of field. No people. No product text.')">Copy Prompt</button>
+        </div>
+      </div>
+
+      <div class="clip-card clip-card-item" data-text="Aerial drone view descending slowly into a lush, private backyard at dusk. Pool or firepit glowing in the center. Surrounding suburban homes visible but blurred. Feeling of sanctuary within reach. Hyper-realistic, cinematic color grade, golden tones.">
+        <div class="card-tag">BH-02 — Backyard Hook <span class="card-platform">Reel Thumbnail · Facebook Video Still</span></div>
+        <div class="card-body">
+          <div class="card-label">Image Prompt</div>
+          <div class="card-prompt">Aerial drone view descending slowly into a lush, private backyard at dusk. Pool or firepit glowing in the center. Surrounding suburban homes visible but blurred. Feeling of sanctuary within reach. Hyper-realistic, cinematic color grade, golden tones.</div>
+        </div>
+        <div class="card-footer">
+          <button class="copy-btn primary" onclick="copyCard(this, 'Aerial drone view descending slowly into a lush, private backyard at dusk. Pool or firepit glowing in the center. Surrounding suburban homes visible but blurred. Feeling of sanctuary within reach. Hyper-realistic, cinematic color grade, golden tones.')">Copy Prompt</button>
+        </div>
+      </div>
+
+      <div class="clip-card clip-card-item" data-text="Close-up of bare feet stepping from interior hardwood floor out onto warm exterior stone pavers. Morning light. Blurred background reveals glimpse of an outdoor living space. No face shown. Feels like a first step into something new. Shallow DOF, warm tones.">
+        <div class="card-tag">BH-03 — Backyard Hook (Feet) <span class="card-platform">Reel Opening Frame · Instagram Feed</span></div>
+        <div class="card-body">
+          <div class="card-label">Image Prompt</div>
+          <div class="card-prompt">Close-up of bare feet stepping from interior hardwood floor out onto warm exterior stone pavers. Morning light. Blurred background reveals glimpse of an outdoor living space. No face shown. Feels like a first step into something new. Shallow DOF, warm tones.</div>
+          <div class="card-label">Note</div>
+          <div class="card-body-text" style="font-size:12px">This is the recommended opening frame for the 15-sec Reel (Beat 1). Print and use as video reference.</div>
+        </div>
+        <div class="card-footer">
+          <button class="copy-btn primary" onclick="copyCard(this, 'Close-up of bare feet stepping from interior hardwood floor out onto warm exterior stone pavers. Morning light. Blurred background reveals glimpse of an outdoor living space. No face shown. Feels like a first step into something new. Shallow DOF, warm tones.')">Copy Prompt</button>
+        </div>
+      </div>
+
+      <div style="color:rgba(255,255,255,0.6);font-size:13px;font-weight:700;text-transform:uppercase;letter-spacing:1.5px;margin:24px 0 16px">BACKYARD — OUTRO / DREAM OUTCOME IMAGES</div>
+
+      <div class="clip-card clip-card-item" data-text="Hyper-realistic photograph, golden hour. Multi-generational family gathered in a beautifully designed backyard — grandparents, parents, children. Fire feature lit, string lights glowing, modern outdoor kitchen visible. Everyone relaxed and present. No phones. Warm, cinematic color grade.">
+        <div class="card-tag">BO-01 — Backyard Outro <span class="card-platform">Facebook Feed · Instagram · Retargeting</span></div>
+        <div class="card-body">
+          <div class="card-label">Image Prompt</div>
+          <div class="card-prompt">Hyper-realistic photograph, golden hour. Multi-generational family gathered in a beautifully designed backyard — grandparents, parents, children. Fire feature lit, string lights glowing, modern outdoor kitchen visible. Everyone relaxed and present. No phones. Warm, cinematic color grade.</div>
+        </div>
+        <div class="card-footer">
+          <button class="copy-btn primary" onclick="copyCard(this, 'Hyper-realistic photograph, golden hour. Multi-generational family gathered in a beautifully designed backyard — grandparents, parents, children. Fire feature lit, string lights glowing, modern outdoor kitchen visible. Everyone relaxed and present. No phones. Warm, cinematic color grade.')">Copy Prompt</button>
+        </div>
+      </div>
+
+      <div class="clip-card clip-card-item" data-text="Wide-angle morning shot. Stunning backyard in full — pool, landscaping, covered outdoor kitchen, pergola. A man in his 50s stands with coffee, looking out with quiet satisfaction. Morning light. No text. Pure aspiration.">
+        <div class="card-tag">BO-03 — Backyard Outro (Single Figure) <span class="card-platform">Google Display · Facebook · Instagram</span></div>
+        <div class="card-body">
+          <div class="card-label">Image Prompt</div>
+          <div class="card-prompt">Wide-angle morning shot. Stunning backyard in full — pool, landscaping, covered outdoor kitchen, pergola. A man in his 50s stands with coffee, looking out with quiet satisfaction. Morning light. No text. Pure aspiration.</div>
+        </div>
+        <div class="card-footer">
+          <button class="copy-btn primary" onclick="copyCard(this, 'Wide-angle morning shot. Stunning backyard in full — pool, landscaping, covered outdoor kitchen, pergola. A man in his 50s stands with coffee, looking out with quiet satisfaction. Morning light. No text. Pure aspiration.')">Copy Prompt</button>
+        </div>
+      </div>
+
+      <div style="color:rgba(255,255,255,0.6);font-size:13px;font-weight:700;text-transform:uppercase;letter-spacing:1.5px;margin:24px 0 16px">LOWER LEVEL — HOOK IMAGES</div>
+
+      <div class="clip-card clip-card-item" data-text="Looking down a beautifully finished staircase into a lower level — warm light glows from below, suggesting something special. Modern handrail, natural material treads. Only the top few steps visible. Cinematic, anticipation-building composition.">
+        <div class="card-tag">LH-01 — Lower Level Hook (Staircase) <span class="card-platform">Facebook Feed · Reel Opening Frame</span></div>
+        <div class="card-body">
+          <div class="card-label">Image Prompt</div>
+          <div class="card-prompt">Looking down a beautifully finished staircase into a lower level — warm light glows from below, suggesting something special. Modern handrail, natural material treads. Only the top few steps visible. Cinematic, anticipation-building composition.</div>
+          <div class="card-label">Note</div>
+          <div class="card-body-text" style="font-size:12px">Recommended opening frame for 15-sec Lower Level Reel (Beat 1). Reference from session: "blueprint turning into movie build."</div>
+        </div>
+        <div class="card-footer">
+          <button class="copy-btn primary" onclick="copyCard(this, 'Looking down a beautifully finished staircase into a lower level — warm light glows from below, suggesting something special. Modern handrail, natural material treads. Only the top few steps visible. Cinematic, anticipation-building composition.')">Copy Prompt</button>
+        </div>
+      </div>
+
+      <div class="clip-card clip-card-item" data-text="Blueprint overlaid with glowing light tracing out a lower-level floor plan — then the blueprint partially transforms into a real, finished space in the corner. Creative concept art, hyper-realistic photo meets architectural visualization.">
+        <div class="card-tag">LH-03 — Blueprint Transform <span class="card-platform">YouTube Pre-Roll · Facebook Video Thumb</span></div>
+        <div class="card-body">
+          <div class="card-label">Image Prompt</div>
+          <div class="card-prompt">Blueprint overlaid with glowing light tracing out a lower-level floor plan — then the blueprint partially transforms into a real, finished space in the corner. Creative concept art, hyper-realistic photo meets architectural visualization.</div>
+          <div class="card-label">Note</div>
+          <div class="card-body-text" style="font-size:12px">Directly from session concept: "blueprint turning into a movie build as a thumbnail." Use as YouTube video thumbnail.</div>
+        </div>
+        <div class="card-footer">
+          <button class="copy-btn primary" onclick="copyCard(this, 'Blueprint overlaid with glowing light tracing out a lower-level floor plan — then the blueprint partially transforms into a real, finished space in the corner. Creative concept art, hyper-realistic photo meets architectural visualization.')">Copy Prompt</button>
+        </div>
+      </div>
+
+      <div style="color:rgba(255,255,255,0.6);font-size:13px;font-weight:700;text-transform:uppercase;letter-spacing:1.5px;margin:24px 0 16px">LOWER LEVEL — OUTRO / DREAM OUTCOME IMAGES</div>
+
+      <div class="clip-card clip-card-item" data-text="Hyper-realistic wide shot. Stunning finished basement — in-home movie theater with tiered seating, custom millwork, ambient LED lighting. Family of four watching a film together. Feels aspirational but attainable. Warm cinematic grade.">
+        <div class="card-tag">LO-01 — Lower Level Outro (Theater) <span class="card-platform">Facebook · Instagram · Google Display</span></div>
+        <div class="card-body">
+          <div class="card-label">Image Prompt</div>
+          <div class="card-prompt">Hyper-realistic wide shot. Stunning finished basement — in-home movie theater with tiered seating, custom millwork, ambient LED lighting. Family of four watching a film together. Feels aspirational but attainable. Warm cinematic grade.</div>
+        </div>
+        <div class="card-footer">
+          <button class="copy-btn primary" onclick="copyCard(this, 'Hyper-realistic wide shot. Stunning finished basement — in-home movie theater with tiered seating, custom millwork, ambient LED lighting. Family of four watching a film together. Feels aspirational but attainable. Warm cinematic grade.')">Copy Prompt</button>
+        </div>
+      </div>
+
+      <div class="clip-card clip-card-item" data-text="An older couple in their 60s in a beautifully designed lower level — accessible, wide-entry bathroom visible, walk-in shower through glass. Space feels elegant and intentional, not clinical. Morning light. Aging-in-place done beautifully.">
+        <div class="card-tag">LO-03 — Lower Level Outro (Aging in Place) <span class="card-platform">Facebook 55+ · Google Audience</span></div>
+        <div class="card-body">
+          <div class="card-label">Image Prompt</div>
+          <div class="card-prompt">An older couple in their 60s in a beautifully designed lower level — accessible, wide-entry bathroom visible, walk-in shower through glass. Space feels elegant and intentional, not clinical. Morning light. Aging-in-place done beautifully.</div>
+        </div>
+        <div class="card-footer">
+          <button class="copy-btn primary" onclick="copyCard(this, 'An older couple in their 60s in a beautifully designed lower level — accessible, wide-entry bathroom visible, walk-in shower through glass. Space feels elegant and intentional, not clinical. Morning light. Aging-in-place done beautifully.')">Copy Prompt</button>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- VIDEO ARC -->
+  <div class="section" id="tab-video">
+    <div class="section-header">
+      <div class="section-title">Video & Cinematic Story Arc</div>
+      <div class="section-desc">Universal three-beat structure for Reels, Stories, and Facebook Video. Say less on screen — let the imagery and sound do the emotional work.</div>
+    </div>
+
+    <div class="arc-row">
+      <div class="arc-beat b1">
+        <div class="beat-num">Beat 1</div>
+        <div class="beat-title">Hook</div>
+        <div class="beat-time">0:00 – 0:04</div>
+        <div class="beat-desc">No text or minimal text. Pure image. The corner of something beautiful — a sound, a texture, a feeling. One question in the viewer's mind: <em>What is that?</em> Curiosity is the only goal here.</div>
+      </div>
+      <div class="arc-beat b2">
+        <div class="beat-num">Beat 2</div>
+        <div class="beat-title">Build</div>
+        <div class="beat-time">0:04 – 0:20</div>
+        <div class="beat-desc">Slow pan or reveal. Ambient audio: water, breeze, fire crackle. One line of text overlay maximum — let the space sell itself. Resistance builds desire. No narration needed.</div>
+      </div>
+      <div class="arc-beat b3">
+        <div class="beat-num">Beat 3</div>
+        <div class="beat-title">Dream Outro</div>
+        <div class="beat-time">0:20 – 0:30</div>
+        <div class="beat-desc">Full scene reveal with family present. Life being lived. One line of copy max. CTA overlay appears. Higgs Field logo on dark field — 2 seconds alone. Silence or single piano note.</div>
+      </div>
+    </div>
+
+    <div style="margin-bottom:32px">
+      <div style="color:#fff;font-size:18px;font-weight:700;margin-bottom:16px">Backyard — 15-Second Shot Sequence</div>
+      <div class="clip-card clip-card-item" data-text="0:00-0:02 Extreme close-up: bare feet stepping onto warm pavers. No music yet. Ambient sound only. 0:02-0:06 Slow aerial pull-back from ground level. Space begins to reveal. Warm light. No faces. 0:06-0:12 Overhead drone descending into a stunning backyard at golden hour. Music begins — low, warm, cinematic, no lyrics. 0:12-0:15 Cut to family gathered. One line fades in: Your vacation is two steps away. Logo hold.">
+        <div class="card-tag">15-SEC REEL — BACKYARD <span class="card-platform">Instagram Reels · Facebook Stories</span></div>
+        <div class="card-body">
+          <div style="display:flex;flex-direction:column;gap:8px">
+            <div style="display:flex;gap:10px;align-items:flex-start"><div style="min-width:64px;font-size:11px;font-weight:700;color:var(--gold);padding-top:2px">0:00-0:02</div><div style="font-size:13px;color:#333;line-height:1.5">Extreme close-up: bare feet stepping onto warm pavers. No music. Ambient sound only.</div></div>
+            <div style="display:flex;gap:10px;align-items:flex-start"><div style="min-width:64px;font-size:11px;font-weight:700;color:var(--gold);padding-top:2px">0:02-0:06</div><div style="font-size:13px;color:#333;line-height:1.5">Slow aerial pull-back. Space begins to reveal. Warm light. No faces shown.</div></div>
+            <div style="display:flex;gap:10px;align-items:flex-start"><div style="min-width:64px;font-size:11px;font-weight:700;color:var(--gold);padding-top:2px">0:06-0:12</div><div style="font-size:13px;color:#333;line-height:1.5">Overhead drone descending into stunning backyard at golden hour. Music begins — low, warm, cinematic, no lyrics.</div></div>
+            <div style="display:flex;gap:10px;align-items:flex-start"><div style="min-width:64px;font-size:11px;font-weight:700;color:var(--gold);padding-top:2px">0:12-0:15</div><div style="font-size:13px;color:#333;line-height:1.5">Cut to family gathered. Text fades in: <strong>"Your vacation is two steps away."</strong> Logo hold on dark field.</div></div>
+          </div>
+        </div>
+        <div class="card-footer">
+          <button class="copy-btn primary" onclick="copyCard(this, '0:00-0:02 — Extreme close-up: bare feet stepping onto warm pavers. No music. Ambient sound only.\n0:02-0:06 — Slow aerial pull-back. Space begins to reveal. Warm light. No faces.\n0:06-0:12 — Overhead drone descending into stunning backyard at golden hour. Music begins.\n0:12-0:15 — Cut to family gathered. Text: Your vacation is two steps away. Logo hold.')">Copy Shot List</button>
+        </div>
+      </div>
+    </div>
+
+    <div style="margin-bottom:32px">
+      <div style="color:#fff;font-size:18px;font-weight:700;margin-bottom:16px">Lower Level — 15-Second Shot Sequence</div>
+      <div class="clip-card clip-card-item" data-text="0:00-0:03 Hook: looking down staircase into warm light below. No context given. 0:03-0:08 Slow descent. Materials reveal: millwork, tile, ambient lighting. No narration. 0:08-0:13 Full reveal — wide shot of finished lower level. Family enjoying the space. 0:13-0:15 Text: The foundation of any good family. Logo hold.">
+        <div class="card-tag">15-SEC REEL — LOWER LEVEL <span class="card-platform">Instagram Reels · Facebook Stories</span></div>
+        <div class="card-body">
+          <div style="display:flex;flex-direction:column;gap:8px">
+            <div style="display:flex;gap:10px;align-items:flex-start"><div style="min-width:64px;font-size:11px;font-weight:700;color:var(--gold);padding-top:2px">0:00-0:03</div><div style="font-size:13px;color:#333;line-height:1.5">Hook: looking down staircase into warm light below. No context given. Pure curiosity.</div></div>
+            <div style="display:flex;gap:10px;align-items:flex-start"><div style="min-width:64px;font-size:11px;font-weight:700;color:var(--gold);padding-top:2px">0:03-0:08</div><div style="font-size:13px;color:#333;line-height:1.5">Slow descent. Materials reveal: millwork, tile, ambient lighting. No narration.</div></div>
+            <div style="display:flex;gap:10px;align-items:flex-start"><div style="min-width:64px;font-size:11px;font-weight:700;color:var(--gold);padding-top:2px">0:08-0:13</div><div style="font-size:13px;color:#333;line-height:1.5">Full reveal — wide shot of finished lower level. Family enjoying the space.</div></div>
+            <div style="display:flex;gap:10px;align-items:flex-start"><div style="min-width:64px;font-size:11px;font-weight:700;color:var(--gold);padding-top:2px">0:13-0:15</div><div style="font-size:13px;color:#333;line-height:1.5">Text: <strong>"The foundation of any good family."</strong> Higgs Field logo hold.</div></div>
+          </div>
+        </div>
+        <div class="card-footer">
+          <button class="copy-btn primary" onclick="copyCard(this, '0:00-0:03 — Hook: looking down staircase into warm light below. Pure curiosity.\n0:03-0:08 — Slow descent. Materials reveal: millwork, tile, ambient lighting. No narration.\n0:08-0:13 — Full reveal — wide shot of finished lower level. Family enjoying the space.\n0:13-0:15 — Text: The foundation of any good family. Logo hold.')">Copy Shot List</button>
+        </div>
+      </div>
+    </div>
+
+    <div style="color:#fff;font-size:18px;font-weight:700;margin-bottom:16px">Tone & Sound Direction</div>
+    <div class="clip-grid">
+      <div class="clip-card"><div class="card-body"><div class="card-label">Music</div><div class="card-body-text">Warm, cinematic, instrumental. Slow piano, light acoustic guitar, or ambient electronic. No lyrics. No upbeat commercial energy. Feeling: premium, quiet confidence.</div></div></div>
+      <div class="clip-card"><div class="card-body"><div class="card-label">Color Grade</div><div class="card-body-text">Golden hour warmth. Slight desaturation on shadows. Clean highlights. Real-world light — not oversaturated. Reference: architectural lifestyle photography.</div></div></div>
+      <div class="clip-card"><div class="card-body"><div class="card-label">Text Treatment</div><div class="card-body-text">White or off-white text, 30-40% of screen width, bottom-third placement. One line at a time. Fade in/out. Never stacked. Never busy. Silence does the work.</div></div></div>
+      <div class="clip-card"><div class="card-body"><div class="card-label">Voiceover (60-sec only)</div><div class="card-body-text">If used: male or female, measured pace, low register. No excitement. Conversational. As if speaking to one person, not broadcasting to many.</div></div></div>
+    </div>
+  </div>
+
+  <!-- PLATFORM GUIDE -->
+  <div class="section" id="tab-platform">
+    <div class="section-header">
+      <div class="section-title">Platform Deployment Guide</div>
+      <div class="section-desc">Which copy goes where, and in what format. Use this to build your batch production schedule.</div>
+    </div>
+
+    <div style="color:#fff;font-size:18px;font-weight:700;margin-bottom:16px">Meta — Facebook & Instagram</div>
+    <table class="platform-table" style="margin-bottom:32px">
+      <thead><tr><th>Placement</th><th>Format</th><th>Copy Version</th><th>CTA Button</th></tr></thead>
+      <tbody>
+        <tr><td>Facebook Feed</td><td>Static Image or 30-sec Video</td><td>A1–A5 or L1–L5 (Primary)</td><td>Learn More / Book Now</td></tr>
+        <tr><td>Instagram Feed</td><td>Square or Portrait Image</td><td>B1–B3 or LA1–LA2 (Family/AIP)</td><td>See More</td></tr>
+        <tr><td>Instagram Stories</td><td>9:16 Video, 15 sec</td><td>C overlays (one-line only)</td><td>Swipe Up / Assessment Link</td></tr>
+        <tr><td>Instagram Reels</td><td>9:16 Video, 15-30 sec</td><td>Cinematic arc — no text until Beat 3</td><td>See What We Build</td></tr>
+        <tr><td>Facebook Stories</td><td>9:16 Video, 15 sec</td><td>C copy or Hook-only image</td><td>Assessment Link</td></tr>
+        <tr><td>Facebook Retargeting</td><td>Carousel or Static</td><td>B-series or LA-series (family/AIP)</td><td>Get Your Free Assessment</td></tr>
+      </tbody>
+    </table>
+
+    <div style="color:#fff;font-size:18px;font-weight:700;margin-bottom:16px">Google & YouTube</div>
+    <table class="platform-table" style="margin-bottom:32px">
+      <thead><tr><th>Placement</th><th>Format</th><th>Creative Direction</th><th>Targeting</th></tr></thead>
+      <tbody>
+        <tr><td>Google Display</td><td>Static image + headline</td><td>Hook images BH-01, LH-01 + single-line headline</td><td>Home improvement intent, HHI $125K+, ages 35-65</td></tr>
+        <tr><td>YouTube Pre-Roll (Skip)</td><td>30-sec video</td><td>Full 3-beat arc. Hook must land in first 4 sec before skip appears.</td><td>In-market: home renovation, luxury home</td></tr>
+        <tr><td>YouTube Non-Skip</td><td>15-sec video</td><td>Beats 1+2 only. Awareness play — no CTA button.</td><td>Broad homeowner audience</td></tr>
+      </tbody>
+    </table>
+
+    <div style="color:#fff;font-size:18px;font-weight:700;margin-bottom:16px">Organic Social Cadence (4-Week Launch)</div>
+    <table class="platform-table">
+      <thead><tr><th>Week</th><th>Content</th><th>Caption Strategy</th><th>CTA</th></tr></thead>
+      <tbody>
+        <tr><td>Week 1</td><td>Backyard Hook images (BH-01 to BH-04)</td><td>One-line question only. No product. Curiosity.</td><td>None — awareness only</td></tr>
+        <tr><td>Week 2</td><td>Backyard Outro images (BO-01 to BO-04)</td><td>A1 or B1 copy + assessment link in bio</td><td>Assessment link</td></tr>
+        <tr><td>Week 3</td><td>Lower Level Hook images (LH-01 to LH-03)</td><td>One-line intrigue. Foundation theme.</td><td>None — awareness only</td></tr>
+        <tr><td>Week 4</td><td>Lower Level Outro images (LO-01 to LO-03)</td><td>L1 or LA1 copy + assessment CTA</td><td>Assessment link / Discovery call</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <!-- CHECKLIST -->
+  <div class="section" id="tab-checklist">
+    <div class="section-header">
+      <div class="section-title">Batch Production Checklist</div>
+      <div class="section-desc">Run content creation as a single production session. Check off items as you go. Progress resets on page reload.</div>
+    </div>
+
+    <div style="color:rgba(255,255,255,0.7);font-size:14px;font-weight:700;text-transform:uppercase;letter-spacing:1px;margin-bottom:12px">Image Generation Batch</div>
+    <ul class="checklist">
+      <li><div class="check-box" onclick="toggleCheck(this)"></div>Generate BH-01 to BH-04 — Backyard Hook images (4 images)</li>
+      <li><div class="check-box" onclick="toggleCheck(this)"></div>Generate BO-01 to BO-04 — Backyard Dream Outro images (4 images)</li>
+      <li><div class="check-box" onclick="toggleCheck(this)"></div>Generate LH-01 to LH-03 — Lower Level Hook images (3 images)</li>
+      <li><div class="check-box" onclick="toggleCheck(this)"></div>Generate LO-01 to LO-03 — Lower Level Dream Outro images (3 images)</li>
+      <li><div class="check-box" onclick="toggleCheck(this)"></div>Export all at 1080x1080 (feed format)</li>
+      <li><div class="check-box" onclick="toggleCheck(this)"></div>Export all at 1080x1920 (stories/reels format)</li>
+    </ul>
+
+    <div style="color:rgba(255,255,255,0.7);font-size:14px;font-weight:700;text-transform:uppercase;letter-spacing:1px;margin:28px 0 12px">Video Production Batch</div>
+    <ul class="checklist">
+      <li><div class="check-box" onclick="toggleCheck(this)"></div>Film 15-sec Backyard Reel using 4-beat shot sequence</li>
+      <li><div class="check-box" onclick="toggleCheck(this)"></div>Film 30-sec Facebook Backyard Video (expanded sequence)</li>
+      <li><div class="check-box" onclick="toggleCheck(this)"></div>Film 15-sec Lower Level Reel using staircase-descent sequence</li>
+      <li><div class="check-box" onclick="toggleCheck(this)"></div>Film 30-sec Facebook Lower Level Video (blueprint-to-reveal concept)</li>
+      <li><div class="check-box" onclick="toggleCheck(this)"></div>Color grade: warm architectural lifestyle reference — not oversaturated</li>
+      <li><div class="check-box" onclick="toggleCheck(this)"></div>Add music: instrumental, cinematic, no lyrics</li>
+      <li><div class="check-box" onclick="toggleCheck(this)"></div>Add text overlays (C-series) timed to Beat 3 only</li>
+      <li><div class="check-box" onclick="toggleCheck(this)"></div>Logo hold: Higgs Field on dark field, 2-second end card</li>
+    </ul>
+
+    <div style="color:rgba(255,255,255,0.7);font-size:14px;font-weight:700;text-transform:uppercase;letter-spacing:1px;margin:28px 0 12px">Copy & Campaign Setup</div>
+    <ul class="checklist">
+      <li><div class="check-box" onclick="toggleCheck(this)"></div>Final approval on all A-series copy (A1-A5, L1-L5)</li>
+      <li><div class="check-box" onclick="toggleCheck(this)"></div>Final approval on family/AIP copy (B1-B3, LA1-LA2)</li>
+      <li><div class="check-box" onclick="toggleCheck(this)"></div>Assessment link live and tracking active (qualify.rsddirect.com)</li>
+      <li><div class="check-box" onclick="toggleCheck(this)"></div>Facebook Link Ad action configured to assessment link</li>
+      <li><div class="check-box" onclick="toggleCheck(this)"></div>Meta Pixel installed and firing on assessment form submit</li>
+      <li><div class="check-box" onclick="toggleCheck(this)"></div>Google Tag Manager / Conversion tracking verified</li>
+      <li><div class="check-box" onclick="toggleCheck(this)"></div>4-week organic social post calendar scheduled in GHL Social Planner</li>
+      <li><div class="check-box" onclick="toggleCheck(this)"></div>Campaign reviewed by Zack + Joel — sign-off before launch</li>
+    </ul>
+  </div>
+
+</main>
+
+<div class="toast" id="toast"></div>
+
+<script>
+  function showTab(id, btn) {
+    document.querySelectorAll('.section').forEach(s => s.classList.remove('active'));
+    document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
+    document.getElementById('tab-' + id).classList.add('active');
+    btn.classList.add('active');
+    updateCount();
+  }
+
+  function copyText(text) {
+    navigator.clipboard.writeText(text).then(() => showToast('Copied to clipboard'));
+  }
+
+  function copyCard(btn, text) {
+    navigator.clipboard.writeText(text).then(() => {
+      const orig = btn.textContent;
+      btn.classList.add('success');
+      btn.textContent = 'Copied!';
+      setTimeout(() => { btn.classList.remove('success'); btn.textContent = orig; }, 1800);
+      showToast('Copied to clipboard');
+    });
+  }
+
+  function showToast(msg) {
+    const t = document.getElementById('toast');
+    t.textContent = msg;
+    t.classList.add('show');
+    setTimeout(() => t.classList.remove('show'), 2200);
+  }
+
+  function toggleCheck(el) {
+    el.classList.toggle('checked');
+  }
+
+  function filterCards() {
+    const q = document.getElementById('searchInput').value.toLowerCase();
+    document.querySelectorAll('.clip-card-item').forEach(card => {
+      const text = (card.textContent + (card.dataset.text || '')).toLowerCase();
+      card.classList.toggle('hidden', q.length > 0 && !text.includes(q));
+    });
+    updateCount();
+  }
+
+  function updateCount() {
+    const visible = document.querySelectorAll('.clip-card-item:not(.hidden)').length;
+    const total = document.querySelectorAll('.clip-card-item').length;
+    document.getElementById('copyCount').textContent = visible === total ? `${total} clips` : `${visible} / ${total} clips`;
+  }
+
+  updateCount();
+</script>
+</body>
+</html>
