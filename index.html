@@ -1,0 +1,424 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>RSD Internal — Campaign Pages</title>
+<style>
+  :root {
+    --navy: #0B2545;
+    --navy2: #0f2f57;
+    --gold: #C9A961;
+    --gold-dim: rgba(201,169,97,0.15);
+    --off: #F0EDE6;
+    --light: #F7F5F1;
+    --mid: #E8E4DA;
+    --text: #1a1a1a;
+    --muted: #777;
+    --green: #2E7D52;
+    --green-bg: rgba(46,125,82,0.1);
+    --red: #c0392b;
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body {
+    font-family: 'Segoe UI', Arial, sans-serif;
+    background: var(--navy);
+    color: var(--text);
+    min-height: 100vh;
+  }
+
+  /* HEADER */
+  header {
+    background: var(--navy);
+    border-bottom: 3px solid var(--gold);
+    padding: 28px 48px 22px;
+    position: sticky;
+    top: 0;
+    z-index: 50;
+  }
+  .header-inner {
+    max-width: 1100px;
+    margin: 0 auto;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 20px;
+    flex-wrap: wrap;
+  }
+  .brand { display: flex; flex-direction: column; gap: 3px; }
+  .brand-name { color: #fff; font-size: 20px; font-weight: 800; letter-spacing: 2.5px; }
+  .brand-sub { color: var(--gold); font-size: 11px; letter-spacing: 2px; text-transform: uppercase; }
+  .header-meta { color: rgba(255,255,255,0.35); font-size: 12px; text-align: right; line-height: 1.6; }
+
+  /* SEARCH */
+  .search-bar {
+    background: rgba(255,255,255,0.04);
+    border-bottom: 1px solid rgba(201,169,97,0.15);
+    padding: 16px 48px;
+  }
+  .search-inner {
+    max-width: 1100px;
+    margin: 0 auto;
+    display: flex;
+    gap: 12px;
+    align-items: center;
+  }
+  .search-input {
+    flex: 1;
+    max-width: 360px;
+    background: rgba(255,255,255,0.06);
+    border: 1px solid rgba(201,169,97,0.3);
+    border-radius: 6px;
+    padding: 9px 14px;
+    color: #fff;
+    font-size: 13px;
+    outline: none;
+    transition: border-color 0.2s;
+  }
+  .search-input::placeholder { color: rgba(255,255,255,0.3); }
+  .search-input:focus { border-color: var(--gold); }
+  .filter-pills { display: flex; gap: 8px; flex-wrap: wrap; }
+  .pill {
+    background: transparent;
+    border: 1px solid rgba(201,169,97,0.3);
+    color: rgba(255,255,255,0.5);
+    padding: 5px 14px;
+    border-radius: 100px;
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 0.8px;
+    text-transform: uppercase;
+    cursor: pointer;
+    transition: all 0.18s;
+  }
+  .pill:hover, .pill.active {
+    background: var(--gold-dim);
+    border-color: var(--gold);
+    color: var(--gold);
+  }
+  .page-count { color: rgba(255,255,255,0.3); font-size: 12px; margin-left: auto; white-space: nowrap; }
+
+  /* MAIN */
+  main {
+    max-width: 1100px;
+    margin: 0 auto;
+    padding: 36px 48px 80px;
+  }
+
+  /* CLIENT SECTION */
+  .client-section { margin-bottom: 48px; }
+  .client-header {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    margin-bottom: 16px;
+    padding-bottom: 12px;
+    border-bottom: 1px solid rgba(201,169,97,0.2);
+  }
+  .client-avatar {
+    width: 36px; height: 36px;
+    border-radius: 8px;
+    background: var(--gold-dim);
+    border: 1px solid rgba(201,169,97,0.3);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 14px;
+    font-weight: 800;
+    color: var(--gold);
+    letter-spacing: 0.5px;
+    flex-shrink: 0;
+  }
+  .client-name { color: #fff; font-size: 16px; font-weight: 700; }
+  .client-meta { color: rgba(255,255,255,0.35); font-size: 12px; }
+  .client-badge {
+    margin-left: auto;
+    background: var(--green-bg);
+    color: var(--green);
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    padding: 3px 10px;
+    border-radius: 100px;
+    border: 1px solid rgba(46,125,82,0.3);
+  }
+  .client-badge.pilot { background: rgba(201,169,97,0.1); color: var(--gold); border-color: rgba(201,169,97,0.3); }
+
+  /* PAGE CARDS */
+  .page-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    gap: 14px;
+  }
+  .page-card {
+    background: #fff;
+    border-radius: 10px;
+    overflow: hidden;
+    border: 1px solid var(--mid);
+    text-decoration: none;
+    display: flex;
+    flex-direction: column;
+    transition: box-shadow 0.2s, transform 0.15s;
+  }
+  .page-card:hover { box-shadow: 0 6px 24px rgba(0,0,0,0.18); transform: translateY(-2px); }
+  .page-card.placeholder {
+    border: 1px dashed rgba(201,169,97,0.25);
+    background: rgba(255,255,255,0.02);
+    cursor: default;
+    pointer-events: none;
+  }
+  .card-top {
+    background: var(--navy);
+    padding: 10px 14px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+  .card-type {
+    color: var(--gold);
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+  }
+  .card-status {
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: 0.8px;
+    text-transform: uppercase;
+    padding: 2px 8px;
+    border-radius: 100px;
+  }
+  .status-live { background: var(--green-bg); color: var(--green); border: 1px solid rgba(46,125,82,0.4); }
+  .status-wip { background: rgba(201,169,97,0.1); color: var(--gold); border: 1px solid rgba(201,169,97,0.3); }
+  .status-empty { background: rgba(255,255,255,0.05); color: rgba(255,255,255,0.3); border: 1px solid rgba(255,255,255,0.1); }
+
+  .card-body { padding: 16px; flex: 1; }
+  .card-title { font-size: 15px; font-weight: 700; color: var(--navy); margin-bottom: 6px; line-height: 1.3; }
+  .card-desc { font-size: 12px; color: var(--muted); line-height: 1.5; }
+  .card-footer {
+    padding: 10px 16px;
+    border-top: 1px solid var(--mid);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+  .card-date { font-size: 11px; color: var(--muted); }
+  .card-arrow {
+    width: 26px; height: 26px;
+    background: var(--navy);
+    border-radius: 6px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--gold);
+    font-size: 13px;
+    transition: background 0.15s;
+  }
+  .page-card:hover .card-arrow { background: var(--gold); color: var(--navy); }
+
+  .placeholder .card-title { color: rgba(255,255,255,0.2); }
+  .placeholder .card-desc { color: rgba(255,255,255,0.15); }
+  .placeholder .card-date { color: rgba(255,255,255,0.15); }
+  .placeholder .card-footer { border-top-color: rgba(255,255,255,0.06); }
+  .placeholder .card-body { padding: 16px; }
+
+  /* EMPTY SLOT */
+  .add-slot {
+    background: rgba(255,255,255,0.02);
+    border: 1px dashed rgba(201,169,97,0.2);
+    border-radius: 10px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 28px 20px;
+    gap: 8px;
+    min-height: 140px;
+    cursor: default;
+  }
+  .add-slot-icon { font-size: 22px; color: rgba(201,169,97,0.3); }
+  .add-slot-label { font-size: 11px; color: rgba(255,255,255,0.2); font-weight: 600; letter-spacing: 1px; text-transform: uppercase; }
+
+  /* FOLDER STRUCTURE */
+  .folder-section {
+    margin-top: 48px;
+    background: rgba(255,255,255,0.03);
+    border: 1px solid rgba(201,169,97,0.15);
+    border-radius: 12px;
+    padding: 24px 28px;
+  }
+  .folder-title { color: var(--gold); font-size: 11px; font-weight: 700; letter-spacing: 2px; text-transform: uppercase; margin-bottom: 16px; }
+  .folder-tree { font-family: 'Courier New', monospace; font-size: 13px; color: rgba(255,255,255,0.5); line-height: 2; }
+  .folder-tree .dir { color: rgba(201,169,97,0.8); }
+  .folder-tree .file { color: rgba(255,255,255,0.65); }
+  .folder-tree .note { color: rgba(255,255,255,0.25); font-size: 11px; }
+
+  /* HIDDEN */
+  .card-item.hidden { display: none; }
+
+  @media (max-width: 680px) {
+    header, .search-bar, main { padding-left: 20px; padding-right: 20px; }
+    .page-grid { grid-template-columns: 1fr; }
+  }
+</style>
+</head>
+<body>
+
+<header>
+  <div class="header-inner">
+    <div class="brand">
+      <div class="brand-name">RSD INTERNAL</div>
+      <div class="brand-sub">Campaign &amp; Client Pages · ZDJ-VENTURES888</div>
+    </div>
+    <div class="header-meta">
+      Zack &amp; Joel · Real Space Digital<br>
+      <span id="lastUpdated"></span>
+    </div>
+  </div>
+</header>
+
+<div class="search-bar">
+  <div class="search-inner">
+    <input class="search-input" type="text" placeholder="Search pages, clients, types..." id="searchInput" oninput="filterCards()">
+    <div class="filter-pills">
+      <button class="pill active" onclick="filterType('all', this)">All</button>
+      <button class="pill" onclick="filterType('campaign', this)">Campaign</button>
+      <button class="pill" onclick="filterType('proposal', this)">Proposal</button>
+      <button class="pill" onclick="filterType('report', this)">Report</button>
+    </div>
+    <div class="page-count" id="pageCount"></div>
+  </div>
+</div>
+
+<main>
+
+  <!-- HIGGS FIELD -->
+  <div class="client-section">
+    <div class="client-header">
+      <div class="client-avatar">HF</div>
+      <div>
+        <div class="client-name">Higgs Field</div>
+        <div class="client-meta">Home Design &amp; Build · Backyard &amp; Lower Level Campaign</div>
+      </div>
+      <div class="client-badge pilot">Active Campaign</div>
+    </div>
+    <div class="page-grid">
+
+      <a class="page-card card-item" href="higgs-field/Higgs_Field_Campaign_Clipboard.html" target="_blank" data-type="campaign" data-text="higgs field ad campaign clipboard backyard lower level copy image prompts video arc">
+        <div class="card-top">
+          <span class="card-type">Ad Campaign</span>
+          <span class="card-status status-live">Live</span>
+        </div>
+        <div class="card-body">
+          <div class="card-title">Campaign Clipboard</div>
+          <div class="card-desc">Full ad copy suite — backyard retreat &amp; lower level. Image prompts, video arc, platform guide, batch checklist.</div>
+        </div>
+        <div class="card-footer">
+          <span class="card-date">June 2026 · Zack &amp; Joel Session</span>
+          <div class="card-arrow">→</div>
+        </div>
+      </a>
+
+      <div class="add-slot">
+        <div class="add-slot-icon">+</div>
+        <div class="add-slot-label">Add page · higgs-field/</div>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- BERRIZ -->
+  <div class="client-section">
+    <div class="client-header">
+      <div class="client-avatar">BD</div>
+      <div>
+        <div class="client-name">Berriz Design Build</div>
+        <div class="client-meta">Flagship Client · Meta Ads · GEO/SEO · Virtual Tour</div>
+      </div>
+      <div class="client-badge">Active Retainer</div>
+    </div>
+    <div class="page-grid">
+
+      <div class="add-slot">
+        <div class="add-slot-icon">+</div>
+        <div class="add-slot-label">Add page · berriz/</div>
+      </div>
+
+      <div class="add-slot">
+        <div class="add-slot-icon">+</div>
+        <div class="add-slot-label">Add page · berriz/</div>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- NEW CLIENT PLACEHOLDER -->
+  <div class="client-section">
+    <div class="client-header">
+      <div class="client-avatar" style="color:rgba(255,255,255,0.2);border-color:rgba(255,255,255,0.08);background:rgba(255,255,255,0.03)">?</div>
+      <div>
+        <div class="client-name" style="color:rgba(255,255,255,0.25)">Next Client</div>
+        <div class="client-meta">Create a folder: [client-name]/</div>
+      </div>
+    </div>
+    <div class="page-grid">
+      <div class="add-slot">
+        <div class="add-slot-icon">+</div>
+        <div class="add-slot-label">Upload first page</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- FOLDER STRUCTURE REFERENCE -->
+  <div class="folder-section">
+    <div class="folder-title">Repo Structure · github.com/ZDJ-VENTURES888/rsd-internal</div>
+    <div class="folder-tree">
+      <span class="dir">rsd-internal/</span><br>
+      &nbsp;&nbsp;├── <span class="file">index.html</span> &nbsp;<span class="note">← this dashboard</span><br>
+      &nbsp;&nbsp;├── <span class="dir">higgs-field/</span><br>
+      &nbsp;&nbsp;│&nbsp;&nbsp;&nbsp;└── <span class="file">Higgs_Field_Campaign_Clipboard.html</span><br>
+      &nbsp;&nbsp;├── <span class="dir">berriz/</span> &nbsp;<span class="note">← drop files here</span><br>
+      &nbsp;&nbsp;├── <span class="dir">[next-client]/</span> &nbsp;<span class="note">← create as needed</span><br>
+      &nbsp;&nbsp;└── <span class="file">README.md</span><br>
+    </div>
+  </div>
+
+</main>
+
+<script>
+  // Date
+  document.getElementById('lastUpdated').textContent = 'Updated ' + new Date().toLocaleDateString('en-US', {month:'short', day:'numeric', year:'numeric'});
+
+  // Count
+  function updateCount() {
+    const visible = document.querySelectorAll('.card-item:not(.hidden)').length;
+    const total = document.querySelectorAll('.card-item').length;
+    document.getElementById('pageCount').textContent = visible === total ? `${total} page${total !== 1 ? 's' : ''}` : `${visible} / ${total}`;
+  }
+
+  let activeType = 'all';
+
+  function filterType(type, btn) {
+    activeType = type;
+    document.querySelectorAll('.pill').forEach(p => p.classList.remove('active'));
+    btn.classList.add('active');
+    filterCards();
+  }
+
+  function filterCards() {
+    const q = document.getElementById('searchInput').value.toLowerCase();
+    document.querySelectorAll('.card-item').forEach(card => {
+      const text = (card.textContent + (card.dataset.text || '')).toLowerCase();
+      const typeMatch = activeType === 'all' || card.dataset.type === activeType;
+      const searchMatch = q.length === 0 || text.includes(q);
+      card.classList.toggle('hidden', !typeMatch || !searchMatch);
+    });
+    updateCount();
+  }
+
+  updateCount();
+</script>
+</body>
+</html>
