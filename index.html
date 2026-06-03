@@ -3,302 +3,360 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>RSD Internal — Campaign Pages</title>
+<title>RSD Internal â Campaign Pages</title>
 <style>
-  :root {
-    --navy: #0B2545;
-    --gold: #C9A961;
-    --cream: #F0EDE6;
-    --gold-light: #e2c97e;
-    --navy-mid: #16375e;
-    --text-muted: #8a9bb5;
-    --tag-bg: rgba(201,169,97,0.10);
-  }
-  * { box-sizing: border-box; margin: 0; padding: 0; }
-  body {
-    background: var(--navy);
-    color: var(--cream);
-    font-family: 'Calibri', 'Outfit', sans-serif;
-    font-size: 15px;
-    line-height: 1.6;
-    min-height: 100vh;
-    padding-bottom: 80px;
-  }
+:root {
+--navy: #0B2545;
+--gold: #C9A961;
+--cream: #F0EDE6;
+--gold-light: #e2c97e;
+--navy-mid: #16375e;
+--text-muted: #8a9bb5;
+--tag-bg: rgba(201,169,97,0.10);
+--amber: #f59e0b;
+}
+* { box-sizing: border-box; margin: 0; padding: 0; }
+body {
+background: var(--navy);
+color: var(--cream);
+font-family: 'Calibri', 'Outfit', sans-serif;
+font-size: 15px;
+line-height: 1.6;
+min-height: 100vh;
+padding-bottom: 80px;
+}
 
-  /* HEADER */
-  .header {
-    background: linear-gradient(135deg, #0B2545 60%, #16375e);
-    border-bottom: 2px solid var(--gold);
-    padding: 36px 48px 30px;
-  }
-  .header-eyebrow {
-    font-size: 10px; letter-spacing: 0.22em; text-transform: uppercase;
-    color: var(--gold); margin-bottom: 8px;
-  }
-  .header h1 {
-    font-family: 'Cormorant Garamond', 'Georgia', serif;
-    font-size: 34px; font-weight: 700; color: var(--cream);
-    letter-spacing: 0.02em; line-height: 1.15;
-  }
-  .header h1 span { color: var(--gold); }
-  .header-sub { font-size: 13px; color: var(--text-muted); margin-top: 6px; letter-spacing: 0.04em; }
+/* HEADER */
+.header {
+background: linear-gradient(135deg, #0B2545 60%, #16375e);
+border-bottom: 2px solid var(--gold);
+padding: 36px 48px 30px;
+}
+.header-eyebrow {
+font-size: 10px; letter-spacing: 0.22em; text-transform: uppercase;
+color: var(--gold); margin-bottom: 8px;
+}
+.header h1 {
+font-family: 'Cormorant Garamond', 'Georgia', serif;
+font-size: 34px; font-weight: 700; color: var(--cream);
+letter-spacing: 0.02em; line-height: 1.15;
+}
+.header h1 span { color: var(--gold); }
+.header-sub { font-size: 13px; color: var(--text-muted); margin-top: 6px; letter-spacing: 0.04em; }
 
-  /* FILTER BAR */
-  .filter-bar {
-    display: flex; gap: 8px; flex-wrap: wrap;
-    padding: 20px 48px 0;
-  }
-  .filter-btn {
-    font-size: 11px; letter-spacing: 0.12em; text-transform: uppercase;
-    padding: 5px 14px; border-radius: 2px; border: 1px solid rgba(201,169,97,0.25);
-    background: transparent; color: var(--text-muted); cursor: pointer;
-    transition: all 0.15s; font-family: 'Calibri', sans-serif;
-  }
-  .filter-btn:hover, .filter-btn.active { border-color: var(--gold); color: var(--gold); background: var(--tag-bg); }
+/* FILTER BAR */
+.filter-bar {
+display: flex; gap: 8px; flex-wrap: wrap;
+padding: 20px 48px 0;
+}
+.filter-btn {
+font-size: 11px; letter-spacing: 0.12em; text-transform: uppercase;
+padding: 5px 14px; border-radius: 2px; border: 1px solid rgba(201,169,97,0.25);
+background: transparent; color: var(--text-muted); cursor: pointer;
+transition: all 0.15s; font-family: 'Calibri', sans-serif;
+}
+.filter-btn:hover, .filter-btn.active { border-color: var(--gold); color: var(--gold); background: var(--tag-bg); }
 
-  /* GRID */
-  .grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
-    gap: 20px;
-    padding: 28px 48px 0;
-  }
+/* GRID */
+.grid {
+display: grid;
+grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+gap: 20px;
+padding: 28px 48px 0;
+}
 
-  /* CLIENT CARD */
-  .card {
-    background: rgba(255,255,255,0.03);
-    border: 1px solid rgba(201,169,97,0.18);
-    border-radius: 6px;
-    padding: 24px 24px 20px;
-    display: flex; flex-direction: column;
-    transition: border-color 0.2s, background 0.2s;
-    position: relative;
-  }
-  .card:hover { border-color: rgba(201,169,97,0.45); background: rgba(255,255,255,0.05); }
+/* CLIENT CARD */
+.card {
+background: rgba(255,255,255,0.03);
+border: 1px solid rgba(201,169,97,0.18);
+border-radius: 6px;
+padding: 24px 24px 20px;
+display: flex; flex-direction: column;
+transition: border-color 0.2s, background 0.2s;
+position: relative;
+}
+.card:hover { border-color: rgba(201,169,97,0.45); background: rgba(255,255,255,0.05); }
 
-  .card-top { display: flex; align-items: flex-start; justify-content: space-between; margin-bottom: 14px; }
-  .card-avatar {
-    width: 42px; height: 42px; border-radius: 4px;
-    background: var(--navy-mid); border: 1px solid rgba(201,169,97,0.3);
-    display: flex; align-items: center; justify-content: center;
-    font-family: 'Cormorant Garamond', serif;
-    font-size: 16px; font-weight: 700; color: var(--gold);
-    flex-shrink: 0;
-  }
-  .card-status {
-    font-size: 9px; letter-spacing: 0.14em; text-transform: uppercase;
-    padding: 3px 9px; border-radius: 2px;
-  }
-  .card-status.active { color: #34d399; border: 1px solid #34d399; background: rgba(52,211,153,0.08); }
-  .card-status.retainer { color: var(--gold); border: 1px solid var(--gold); background: var(--tag-bg); }
-  .card-status.tool { color: #60a5fa; border: 1px solid #60a5fa; background: rgba(96,165,250,0.08); }
+.card-top { display: flex; align-items: flex-start; justify-content: space-between; margin-bottom: 14px; }
+.card-avatar {
+width: 42px; height: 42px; border-radius: 4px;
+background: var(--navy-mid); border: 1px solid rgba(201,169,97,0.3);
+display: flex; align-items: center; justify-content: center;
+font-family: 'Cormorant Garamond', serif;
+font-size: 16px; font-weight: 700; color: var(--gold);
+flex-shrink: 0;
+}
+.card-status {
+font-size: 9px; letter-spacing: 0.14em; text-transform: uppercase;
+padding: 3px 9px; border-radius: 2px;
+}
+.card-status.active { color: #34d399; border: 1px solid #34d399; background: rgba(52,211,153,0.08); }
+.card-status.retainer { color: var(--gold); border: 1px solid var(--gold); background: var(--tag-bg); }
+.card-status.tool { color: #60a5fa; border: 1px solid #60a5fa; background: rgba(96,165,250,0.08); }
+.card-status.build { color: var(--amber); border: 1px solid var(--amber); background: rgba(245,158,11,0.08); }
 
-  .card-client {
-    font-family: 'Cormorant Garamond', serif;
-    font-size: 19px; font-weight: 700; color: var(--cream); letter-spacing: 0.01em;
-    margin-bottom: 3px;
-  }
-  .card-subtitle { font-size: 11px; color: var(--text-muted); letter-spacing: 0.03em; margin-bottom: 14px; }
-  .card-tags { display: flex; gap: 6px; flex-wrap: wrap; margin-bottom: 16px; }
-  .tag {
-    font-size: 10px; letter-spacing: 0.1em; text-transform: uppercase;
-    padding: 2px 8px; border-radius: 2px;
-    background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.08);
-    color: var(--text-muted);
-  }
+.card-client {
+font-family: 'Cormorant Garamond', serif;
+font-size: 19px; font-weight: 700; color: var(--cream); letter-spacing: 0.01em;
+margin-bottom: 3px;
+}
+.card-subtitle { font-size: 11px; color: var(--text-muted); letter-spacing: 0.03em; margin-bottom: 14px; }
+.card-tags { display: flex; gap: 6px; flex-wrap: wrap; margin-bottom: 16px; }
+.tag {
+font-size: 10px; letter-spacing: 0.1em; text-transform: uppercase;
+padding: 2px 8px; border-radius: 2px;
+background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.08);
+color: var(--text-muted);
+}
 
-  .card-pages { flex: 1; display: flex; flex-direction: column; gap: 8px; margin-bottom: 16px; }
-  .page-link {
-    display: flex; align-items: flex-start; gap: 10px;
-    padding: 10px 12px; border-radius: 3px;
-    background: rgba(11,37,69,0.5); border: 1px solid rgba(201,169,97,0.1);
-    text-decoration: none;
-    transition: border-color 0.15s, background 0.15s;
-  }
-  .page-link:hover { border-color: rgba(201,169,97,0.35); background: rgba(201,169,97,0.06); }
-  .page-link-icon {
-    font-size: 10px; letter-spacing: 0.1em; text-transform: uppercase;
-    color: var(--gold); background: var(--tag-bg); border: 1px solid rgba(201,169,97,0.25);
-    padding: 2px 7px; border-radius: 2px; flex-shrink: 0; margin-top: 1px;
-  }
-  .page-link-body { flex: 1; }
-  .page-link-title { font-size: 13px; color: var(--cream); font-weight: 600; }
-  .page-link-desc { font-size: 11px; color: var(--text-muted); margin-top: 1px; line-height: 1.4; }
-  .page-link-meta { font-size: 10px; color: rgba(138,155,181,0.55); margin-top: 3px; }
-  .page-link-arrow { color: var(--gold); font-size: 14px; align-self: center; flex-shrink: 0; opacity: 0.6; }
+.card-pages { flex: 1; display: flex; flex-direction: column; gap: 8px; margin-bottom: 16px; }
+.page-link {
+display: flex; align-items: flex-start; gap: 10px;
+padding: 10px 12px; border-radius: 3px;
+background: rgba(11,37,69,0.5); border: 1px solid rgba(201,169,97,0.1);
+text-decoration: none;
+transition: border-color 0.15s, background 0.15s;
+}
+.page-link:hover { border-color: rgba(201,169,97,0.35); background: rgba(201,169,97,0.06); }
+.page-link-icon {
+font-size: 10px; letter-spacing: 0.1em; text-transform: uppercase;
+color: var(--gold); background: var(--tag-bg); border: 1px solid rgba(201,169,97,0.25);
+padding: 2px 7px; border-radius: 2px; flex-shrink: 0; margin-top: 1px;
+}
+.page-link-body { flex: 1; }
+.page-link-title { font-size: 13px; color: var(--cream); font-weight: 600; }
+.page-link-desc { font-size: 11px; color: var(--text-muted); margin-top: 1px; line-height: 1.4; }
+.page-link-meta { font-size: 10px; color: rgba(138,155,181,0.55); margin-top: 3px; }
+.page-link-arrow { color: var(--gold); font-size: 14px; align-self: center; flex-shrink: 0; opacity: 0.6; }
 
-  .add-page {
-    font-size: 11px; color: rgba(138,155,181,0.4); letter-spacing: 0.08em;
-    padding: 8px 12px; border: 1px dashed rgba(201,169,97,0.12);
-    border-radius: 3px; text-align: center; cursor: default;
-  }
+/* Progress bar for build cards */
+.build-progress { margin-top: 10px; }
+.bp-row { display: flex; justify-content: space-between; align-items: center; margin-bottom: 5px; }
+.bp-label { font-size: 10px; color: var(--text-muted); letter-spacing: 0.06em; }
+.bp-pct { font-size: 10px; color: var(--amber); font-weight: 600; }
+.bp-track { height: 4px; background: rgba(255,255,255,0.07); border-radius: 2px; overflow: hidden; }
+.bp-fill { height: 100%; border-radius: 2px; background: var(--amber); }
+.bp-issues { font-size: 10px; color: rgba(138,155,181,0.5); margin-top: 6px; }
 
-  /* PLACEHOLDER CARD */
-  .card.placeholder { opacity: 0.45; }
-  .card.placeholder .card-client { color: var(--text-muted); }
+.add-page {
+font-size: 11px; color: rgba(138,155,181,0.4); letter-spacing: 0.08em;
+padding: 8px 12px; border: 1px dashed rgba(201,169,97,0.12);
+border-radius: 3px; text-align: center; cursor: default;
+}
 
-  /* REPO STRUCTURE */
-  .repo-card {
-    background: rgba(11,37,69,0.7); border: 1px solid rgba(201,169,97,0.15);
-    border-radius: 6px; padding: 20px 24px;
-    margin: 28px 48px 0;
-  }
-  .repo-title {
-    font-size: 10px; letter-spacing: 0.18em; text-transform: uppercase;
-    color: var(--gold); margin-bottom: 12px;
-  }
-  .repo-tree {
-    font-family: 'Courier New', monospace; font-size: 12px;
-    color: rgba(240,237,230,0.65); line-height: 1.8;
-  }
-  .repo-tree .highlight { color: var(--gold-light); }
-  .repo-tree .new { color: #34d399; }
+/* PLACEHOLDER CARD */
+.card.placeholder { opacity: 0.45; }
+.card.placeholder .card-client { color: var(--text-muted); }
 
-  /* FOOTER */
-  .footer {
-    margin: 40px 48px 0; padding-top: 18px;
-    border-top: 1px solid rgba(201,169,97,0.12);
-    font-size: 11px; color: var(--text-muted); letter-spacing: 0.04em;
-    display: flex; justify-content: space-between; flex-wrap: wrap; gap: 8px;
-  }
+/* REPO STRUCTURE */
+.repo-card {
+background: rgba(11,37,69,0.7); border: 1px solid rgba(201,169,97,0.15);
+border-radius: 6px; padding: 20px 24px;
+margin: 28px 48px 0;
+}
+.repo-title {
+font-size: 10px; letter-spacing: 0.18em; text-transform: uppercase;
+color: var(--gold); margin-bottom: 12px;
+}
+.repo-tree {
+font-family: 'Courier New', monospace; font-size: 12px;
+color: rgba(240,237,230,0.65); line-height: 1.8;
+}
+.repo-tree .highlight { color: var(--gold-light); }
+.repo-tree .new { color: #34d399; }
+.repo-tree .amber { color: var(--amber); }
 
-  @media (max-width: 700px) {
-    .header, .filter-bar, .grid, .repo-card, .footer { padding-left: 18px; padding-right: 18px; }
-    .grid { grid-template-columns: 1fr; }
-  }
+/* FOOTER */
+.footer {
+margin: 40px 48px 0; padding-top: 18px;
+border-top: 1px solid rgba(201,169,97,0.12);
+font-size: 11px; color: var(--text-muted); letter-spacing: 0.04em;
+display: flex; justify-content: space-between; flex-wrap: wrap; gap: 8px;
+}
+
+@media (max-width: 700px) {
+.header, .filter-bar, .grid, .repo-card, .footer { padding-left: 18px; padding-right: 18px; }
+.grid { grid-template-columns: 1fr; }
+}
 </style>
 </head>
 <body>
 
 <div class="header">
-  <div class="header-eyebrow">ZDJ-VENTURES888 · Private Repository</div>
-  <h1>RSD <span>Internal</span></h1>
-  <div class="header-sub">Campaign &amp; Client Pages · Zack &amp; Joel · Real Space Digital</div>
+<div class="header-eyebrow">ZDJ-VENTURES888 Â· Private Repository</div>
+<h1>RSD <span>Internal</span></h1>
+<div class="header-sub">Campaign &amp; Client Pages Â· Zack &amp; Joel Â· Real Space Digital</div>
 </div>
 
 <div class="filter-bar">
-  <button class="filter-btn active">All</button>
-  <button class="filter-btn">Campaign</button>
-  <button class="filter-btn">Proposal</button>
-  <button class="filter-btn">Report</button>
-  <button class="filter-btn">Tools</button>
+<button class="filter-btn active" data-filter="all">All</button>
+<button class="filter-btn" data-filter="campaign">Campaign</button>
+<button class="filter-btn" data-filter="proposal">Proposal</button>
+<button class="filter-btn" data-filter="report">Report</button>
+<button class="filter-btn" data-filter="tools">Tools</button>
+<button class="filter-btn" data-filter="build">Build Active</button>
 </div>
 
 <div class="grid">
 
-  <!-- ── HIGGS FIELD (UNCHANGED) ── -->
-  <div class="card">
-    <div class="card-top">
-      <div class="card-avatar">HF</div>
-      <span class="card-status active">Active Campaign</span>
-    </div>
-    <div class="card-client">Higgs Field</div>
-    <div class="card-subtitle">Home Design &amp; Build · Backyard &amp; Lower Level Campaign</div>
-    <div class="card-tags">
-      <span class="tag">Ad Campaign</span>
-      <span class="tag">Live</span>
-      <span class="tag">Campaign</span>
-    </div>
-    <div class="card-pages">
-      <a class="page-link" href="higgs-field/Higgs_Field_Campaign_Clipboard.html">
-        <span class="page-link-icon">Clipboard</span>
-        <div class="page-link-body">
-          <div class="page-link-title">Campaign Clipboard</div>
-          <div class="page-link-desc">Full ad copy suite — backyard retreat &amp; lower level. Image prompts, video arc, platform guide, batch checklist.</div>
-          <div class="page-link-meta">June 2026 · Zack &amp; Joel Session</div>
-        </div>
-        <span class="page-link-arrow">→</span>
-      </a>
-      <div class="add-page">+ Add page · higgs-field/</div>
-    </div>
-  </div>
+<!-- ââ HIGGS FIELD ââ -->
+<div class="card" data-tags="campaign">
+<div class="card-top">
+<div class="card-avatar">HF</div>
+<span class="card-status active">Active Campaign</span>
+</div>
+<div class="card-client">Higgs Field</div>
+<div class="card-subtitle">Home Design &amp; Build Â· Backyard &amp; Lower Level Campaign</div>
+<div class="card-tags">
+<span class="tag">Ad Campaign</span>
+<span class="tag">Live</span>
+<span class="tag">Campaign</span>
+</div>
+<div class="card-pages">
+<a class="page-link" href="higgs-field/Higgs_Field_Campaign_Clipboard.html">
+<span class="page-link-icon">Clipboard</span>
+<div class="page-link-body">
+<div class="page-link-title">Campaign Clipboard</div>
+<div class="page-link-desc">Full ad copy suite â backyard retreat &amp; lower level. Image prompts, video arc, platform guide, batch checklist.</div>
+<div class="page-link-meta">June 2026 Â· Zack &amp; Joel Session</div>
+</div>
+<span class="page-link-arrow">â</span>
+</a>
+<div class="add-page">+ Add page Â· higgs-field/</div>
+</div>
+</div>
 
-  <!-- ── BERRIZ DESIGN BUILD (UNCHANGED) ── -->
-  <div class="card">
-    <div class="card-top">
-      <div class="card-avatar">BD</div>
-      <span class="card-status retainer">Active Retainer</span>
-    </div>
-    <div class="card-client">Berriz Design Build</div>
-    <div class="card-subtitle">Flagship Client · Meta Ads · GEO/SEO · Virtual Tour</div>
-    <div class="card-tags">
-      <span class="tag">Proposal</span>
-      <span class="tag">Report</span>
-    </div>
-    <div class="card-pages">
-      <div class="add-page">+ Add page · berriz/</div>
-      <div class="add-page">+ Add page · berriz/</div>
-    </div>
-  </div>
+<!-- ââ BERRIZ DESIGN BUILD ââ -->
+<div class="card" data-tags="proposal report">
+<div class="card-top">
+<div class="card-avatar">BD</div>
+<span class="card-status retainer">Active Retainer</span>
+</div>
+<div class="card-client">Berriz Design Build</div>
+<div class="card-subtitle">Flagship Client Â· Meta Ads Â· GEO/SEO Â· Virtual Tour</div>
+<div class="card-tags">
+<span class="tag">Proposal</span>
+<span class="tag">Report</span>
+</div>
+<div class="card-pages">
+<div class="add-page">+ Add page Â· berriz/</div>
+<div class="add-page">+ Add page Â· berriz/</div>
+</div>
+</div>
 
-  <!-- ── VIRAL PROMPT LIBRARY (NEW) ── -->
-  <div class="card">
-    <div class="card-top">
-      <div class="card-avatar">VP</div>
-      <span class="card-status tool">Tools · Internal</span>
-    </div>
-    <div class="card-client">Viral Prompt Library</div>
-    <div class="card-subtitle">Faceless AI Video Prompts · ICP-Adapted · RSD Verticals</div>
-    <div class="card-tags">
-      <span class="tag">HeyGen</span>
-      <span class="tag">Seedance</span>
-      <span class="tag">NotebookLM</span>
-    </div>
-    <div class="card-pages">
-      <a class="page-link" href="viral-prompts/Viral_Prompt_Library_Clipboard.html">
-        <span class="page-link-icon">Clipboard</span>
-        <div class="page-link-body">
-          <div class="page-link-title">Prompt Library Clipboard</div>
-          <div class="page-link-desc">20 storytelling prompts adapted for home services, design-build, and luxury property. One-click copy per prompt.</div>
-          <div class="page-link-meta">June 2026 · Zack &amp; Joel · Based on MoneyPrinterTurbo</div>
-        </div>
-        <span class="page-link-arrow">→</span>
-      </a>
-      <div class="add-page">+ Add page · viral-prompts/</div>
-    </div>
-  </div>
+<!-- ââ VIRAL PROMPT LIBRARY ââ -->
+<div class="card" data-tags="tools">
+<div class="card-top">
+<div class="card-avatar">VP</div>
+<span class="card-status tool">Tools Â· Internal</span>
+</div>
+<div class="card-client">Viral Prompt Library</div>
+<div class="card-subtitle">Faceless AI Video Prompts Â· ICP-Adapted Â· RSD Verticals</div>
+<div class="card-tags">
+<span class="tag">HeyGen</span>
+<span class="tag">Seedance</span>
+<span class="tag">NotebookLM</span>
+</div>
+<div class="card-pages">
+<a class="page-link" href="viral-prompts/Viral_Prompt_Library_Clipboard.html">
+<span class="page-link-icon">Clipboard</span>
+<div class="page-link-body">
+<div class="page-link-title">Prompt Library Clipboard</div>
+<div class="page-link-desc">20 storytelling prompts adapted for home services, design-build, and luxury property. One-click copy per prompt.</div>
+<div class="page-link-meta">June 2026 Â· Zack &amp; Joel Â· Based on MoneyPrinterTurbo</div>
+</div>
+<span class="page-link-arrow">â</span>
+</a>
+<div class="add-page">+ Add page Â· viral-prompts/</div>
+</div>
+</div>
 
-  <!-- ── NEXT CLIENT PLACEHOLDER (UNCHANGED) ── -->
-  <div class="card placeholder">
-    <div class="card-top">
-      <div class="card-avatar" style="color:rgba(201,169,97,0.3);">?</div>
-    </div>
-    <div class="card-client">Next Client</div>
-    <div class="card-subtitle">Create a folder: [client-name]/</div>
-    <div class="card-pages">
-      <div class="add-page">+ Upload first page</div>
-    </div>
-  </div>
+<!-- ââ RSD IG DM AGENT ââ -->
+<div class="card" data-tags="tools build">
+<div class="card-top">
+<div class="card-avatar">IG</div>
+<span class="card-status build">Build Active</span>
+</div>
+<div class="card-client">IG DM Agent</div>
+<div class="card-subtitle">Instagram Automation Â· ManyChat + Claude Â· Custom Backend v2.0</div>
+<div class="card-tags">
+<span class="tag">Automation</span>
+<span class="tag">Backend</span>
+<span class="tag">Claude AI</span>
+<span class="tag">Phase 1/2/3</span>
+</div>
+<div class="card-pages">
+<a class="page-link" href="ig-dm-agent/rsd-ig-agent-internal.html">
+<span class="page-link-icon">Internal</span>
+<div class="page-link-body">
+<div class="page-link-title">IG DM Agent â Build Doc v2.0</div>
+<div class="page-link-desc">Complete system guide â GRAVITY framework, Phase 1/2/3 pricing, ManyChat setup, build progress tracker, 7 Linear issues.</div>
+<div class="page-link-meta">June 2026 Â· RSD-42 through RSD-48 Â· Target: June 30</div>
+</div>
+<span class="page-link-arrow">â</span>
+</a>
+<div class="build-progress">
+<div class="bp-row">
+<span class="bp-label">Build Completion</span>
+<span class="bp-pct">14%</span>
+</div>
+<div class="bp-track"><div class="bp-fill" style="width:14%"></div></div>
+<div class="bp-issues">RSD-42 In Progress Â· 6 issues remaining Â· Deploy target: June 30</div>
+</div>
+</div>
+</div>
+
+<!-- ââ NEXT CLIENT PLACEHOLDER ââ -->
+<div class="card placeholder" data-tags="">
+<div class="card-top">
+<div class="card-avatar" style="color:rgba(201,169,97,0.3);">?</div>
+</div>
+<div class="card-client">Next Client</div>
+<div class="card-subtitle">Create a folder: [client-name]/</div>
+<div class="card-pages">
+<div class="add-page">+ Upload first page</div>
+</div>
+</div>
 
 </div>
 
 <!-- REPO STRUCTURE -->
 <div class="repo-card">
-  <div class="repo-title">Repo Structure · github.com/ZDJ-VENTURES888/rsd-internal</div>
-  <div class="repo-tree">
+<div class="repo-title">Repo Structure Â· github.com/ZDJ-VENTURES888/rsd-internal</div>
+<div class="repo-tree">
 rsd-internal/<br>
-├── <span class="highlight">index.html</span> ← this dashboard<br>
-├── higgs-field/<br>
-│&nbsp;&nbsp;&nbsp;└── Higgs_Field_Campaign_Clipboard.html<br>
-├── <span class="new">viral-prompts/</span> ← <span class="new">added June 2026</span><br>
-│&nbsp;&nbsp;&nbsp;└── <span class="new">Viral_Prompt_Library_Clipboard.html</span><br>
-├── berriz/ ← drop files here<br>
-├── [next-client]/ ← create as needed<br>
-└── README.md
-  </div>
+âââ <span class="highlight">index.html</span> â this dashboard<br>
+âââ higgs-field/<br>
+â&nbsp;&nbsp;&nbsp;âââ Higgs_Field_Campaign_Clipboard.html<br>
+âââ <span class="new">viral-prompts/</span> â <span class="new">added June 2026</span><br>
+â&nbsp;&nbsp;&nbsp;âââ <span class="new">Viral_Prompt_Library_Clipboard.html</span><br>
+âââ <span class="amber">ig-dm-agent/</span> â <span class="amber">added June 2026 Â· Build Active</span><br>
+â&nbsp;&nbsp;&nbsp;âââ <span class="amber">rsd-ig-agent-internal.html</span><br>
+âââ berriz/ â drop files here<br>
+âââ [next-client]/ â create as needed<br>
+âââ README.md
+</div>
 </div>
 
 <div class="footer">
-  <span>Real Space Digital · ZDJ-VENTURES888 · Private Repository · Not for external distribution</span>
-  <span>rsd-internal · June 2026</span>
+<span>Real Space Digital Â· ZDJ-VENTURES888 Â· Private Repository Â· Not for external distribution</span>
+<span>rsd-internal Â· June 2026</span>
 </div>
 
 <script>
-// Filter buttons (visual only — extend with JS data-tags if needed)
 document.querySelectorAll('.filter-btn').forEach(btn => {
   btn.addEventListener('click', () => {
     document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
     btn.classList.add('active');
+    const filter = btn.dataset.filter;
+    document.querySelectorAll('.card').forEach(card => {
+      if (filter === 'all') {
+        card.style.display = '';
+      } else {
+        const tags = card.dataset.tags || '';
+        card.style.display = tags.includes(filter) ? '' : 'none';
+      }
+    });
   });
 });
 </script>
