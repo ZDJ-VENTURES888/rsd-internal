@@ -1,0 +1,336 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>RSD Viral Prompt Library — Internal Clipboard</title>
+<style>
+  :root {
+    --navy: #0B2545;
+    --gold: #C9A961;
+    --cream: #F0EDE6;
+    --gold-light: #e2c97e;
+    --navy-mid: #16375e;
+    --navy-light: #1e4a7a;
+    --text-muted: #8a9bb5;
+    --tag-bg: rgba(201,169,97,0.12);
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body {
+    background: var(--navy);
+    color: var(--cream);
+    font-family: 'Calibri', 'Outfit', sans-serif;
+    font-size: 15px;
+    line-height: 1.6;
+    min-height: 100vh;
+    padding: 0 0 80px;
+  }
+  .header {
+    background: linear-gradient(135deg, #0B2545 60%, #16375e);
+    border-bottom: 2px solid var(--gold);
+    padding: 32px 40px 28px;
+    position: sticky; top: 0; z-index: 100;
+    display: flex; align-items: flex-start; justify-content: space-between; flex-wrap: wrap; gap: 12px;
+  }
+  .back-link {
+    display: inline-block; margin-bottom: 8px;
+    font-size: 11px; letter-spacing: 0.12em; text-transform: uppercase;
+    color: var(--text-muted); text-decoration: none;
+    transition: color 0.2s;
+  }
+  .back-link:hover { color: var(--gold); }
+  .header-badge {
+    font-size: 10px; letter-spacing: 0.18em; text-transform: uppercase;
+    color: var(--gold); background: var(--tag-bg); border: 1px solid var(--gold);
+    padding: 3px 10px; border-radius: 2px; display: inline-block; margin-bottom: 8px;
+  }
+  .header h1 {
+    font-family: 'Cormorant Garamond', 'Georgia', serif;
+    font-size: 28px; font-weight: 700; color: var(--cream); letter-spacing: 0.01em; line-height: 1.2;
+  }
+  .header h1 span { color: var(--gold); }
+  .header-sub { font-size: 12px; color: var(--text-muted); margin-top: 4px; letter-spacing: 0.04em; }
+  .header-meta { text-align: right; font-size: 12px; color: var(--text-muted); }
+  .header-meta strong { color: var(--gold); display: block; font-size: 13px; }
+  .premortem {
+    background: rgba(201,169,97,0.07); border-left: 3px solid var(--gold);
+    margin: 28px 40px 0; padding: 18px 22px; border-radius: 0 4px 4px 0;
+  }
+  .premortem-title {
+    font-size: 11px; letter-spacing: 0.15em; text-transform: uppercase;
+    color: var(--gold); margin-bottom: 10px;
+  }
+  .premortem-grid {
+    display: grid; grid-template-columns: repeat(auto-fill, minmax(240px, 1fr)); gap: 10px;
+  }
+  .premortem-item { font-size: 12.5px; color: var(--cream); opacity: 0.85; }
+  .premortem-item strong { color: var(--gold-light); }
+  .usage-bar { display: flex; gap: 8px; flex-wrap: wrap; margin: 20px 40px 0; align-items: center; }
+  .usage-tag { font-size: 11px; letter-spacing: 0.1em; text-transform: uppercase; padding: 4px 12px; border-radius: 2px; border: 1px solid; }
+  .usage-tag.heygen { color: #a78bfa; border-color: #a78bfa; background: rgba(167,139,250,0.08); }
+  .usage-tag.seedance { color: #34d399; border-color: #34d399; background: rgba(52,211,153,0.08); }
+  .usage-tag.notebook { color: #60a5fa; border-color: #60a5fa; background: rgba(96,165,250,0.08); }
+  .usage-label { font-size: 11px; color: var(--text-muted); letter-spacing: 0.05em; }
+  .section { margin: 32px 40px 0; }
+  .section-header { display: flex; align-items: center; gap: 14px; margin-bottom: 16px; padding-bottom: 10px; border-bottom: 1px solid rgba(201,169,97,0.2); }
+  .section-number { font-family: 'Cormorant Garamond', serif; font-size: 36px; color: rgba(201,169,97,0.25); font-weight: 700; line-height: 1; }
+  .section-title { font-family: 'Cormorant Garamond', serif; font-size: 20px; color: var(--gold); font-weight: 600; letter-spacing: 0.02em; }
+  .section-desc { font-size: 12px; color: var(--text-muted); margin-top: 2px; }
+  .prompt-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(340px, 1fr)); gap: 14px; }
+  .prompt-card { background: rgba(255,255,255,0.03); border: 1px solid rgba(201,169,97,0.15); border-radius: 4px; padding: 18px 20px; transition: border-color 0.2s, background 0.2s; }
+  .prompt-card:hover { border-color: rgba(201,169,97,0.4); background: rgba(255,255,255,0.05); }
+  .prompt-card-top { display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 10px; }
+  .prompt-name { font-family: 'Cormorant Garamond', serif; font-size: 16px; font-weight: 700; color: var(--gold-light); letter-spacing: 0.02em; }
+  .tool-pill { font-size: 9px; letter-spacing: 0.12em; text-transform: uppercase; padding: 2px 8px; border-radius: 2px; border: 1px solid; white-space: nowrap; margin-left: 8px; flex-shrink: 0; }
+  .tool-pill.heygen { color: #a78bfa; border-color: #a78bfa; }
+  .tool-pill.seedance { color: #34d399; border-color: #34d399; }
+  .tool-pill.notebook { color: #60a5fa; border-color: #60a5fa; }
+  .icp-fill { font-size: 11px; color: var(--gold); background: var(--tag-bg); padding: 4px 10px; border-radius: 2px; margin-bottom: 10px; display: inline-block; letter-spacing: 0.03em; }
+  .icp-fill span { color: var(--text-muted); font-style: italic; }
+  .prompt-text { font-size: 13px; color: rgba(240,237,230,0.82); line-height: 1.65; background: rgba(11,37,69,0.6); border: 1px solid rgba(201,169,97,0.1); border-radius: 3px; padding: 12px 14px; white-space: pre-wrap; word-break: break-word; cursor: text; }
+  .copy-btn { display: block; width: 100%; margin-top: 10px; background: transparent; border: 1px solid rgba(201,169,97,0.3); color: var(--gold); font-size: 11px; letter-spacing: 0.12em; text-transform: uppercase; padding: 7px 0; border-radius: 2px; cursor: pointer; transition: background 0.15s, border-color 0.15s; font-family: 'Calibri', sans-serif; }
+  .copy-btn:hover { background: rgba(201,169,97,0.1); border-color: var(--gold); }
+  .copy-btn.copied { background: rgba(201,169,97,0.2); color: var(--gold-light); }
+  .footer { margin: 40px 40px 0; padding: 18px 0 0; border-top: 1px solid rgba(201,169,97,0.15); display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 10px; }
+  .footer-left { font-size: 11px; color: var(--text-muted); letter-spacing: 0.05em; }
+  .footer-left strong { color: var(--gold); }
+  .footer-right { font-size: 11px; color: rgba(138,155,181,0.5); letter-spacing: 0.08em; text-transform: uppercase; }
+  @media (max-width: 700px) {
+    .header { padding: 20px; }
+    .section, .usage-bar, .premortem, .footer { margin-left: 16px; margin-right: 16px; }
+    .prompt-grid { grid-template-columns: 1fr; }
+  }
+</style>
+</head>
+<body>
+<div class="header">
+  <div class="header-left">
+    <a class="back-link" href="../index.html">← RSD Internal Dashboard</a>
+    <div class="header-badge">Internal Use Only · Not for Client Distribution</div>
+    <h1>RSD Viral <span>Prompt Library</span></h1>
+    <div class="header-sub">Faceless AI Video Prompts · ICP-Adapted · Home Services · Design-Build · Luxury Property · June 2026</div>
+  </div>
+  <div class="header-meta">
+    <strong>Zack &amp; Joel · RSD</strong>
+    Session: June 2026<br>
+    Source: rsd-internal · ZDJ-VENTURES888<br>
+    Base credit: harry0703/MoneyPrinterTurbo
+  </div>
+</div>
+<div class="premortem">
+  <div class="premortem-title">Premortem — Risks Identified Before Launch</div>
+  <div class="premortem-grid">
+    <div class="premortem-item"><strong>ICP Fit:</strong> Original prompts targeted creators, not contractors. All fill-ins are pre-adapted to RSD verticals.</div>
+    <div class="premortem-item"><strong>Zero Friction:</strong> Joel needs one-click copy. Every card copies the full adapted text instantly.</div>
+    <div class="premortem-item"><strong>Tool Clarity:</strong> Each prompt tagged by production tool (HeyGen / Seedance / NotebookLM) — no guessing.</div>
+    <div class="premortem-item"><strong>Brand Safety:</strong> Marked internal. Fill-in examples shown, not locked in — copy stays flexible per campaign.</div>
+  </div>
+</div>
+<div class="usage-bar">
+  <span class="usage-label">Use With:</span>
+  <span class="usage-tag heygen">HeyGen Avatar</span>
+  <span class="usage-tag seedance">Seedance B-Roll</span>
+  <span class="usage-tag notebook">NotebookLM Script</span>
+</div>
+<div class="section">
+  <div class="section-header">
+    <div class="section-number">01</div>
+    <div class="section-info">
+      <div class="section-title">Story Arc — Origin &amp; Rise</div>
+      <div class="section-desc">Credibility through transformation narratives. Best for brand story and case study content.</div>
+    </div>
+  </div>
+  <div class="prompt-grid">
+    <div class="prompt-card">
+      <div class="prompt-card-top"><div class="prompt-name">Before It Was Famous</div><span class="tool-pill heygen">HeyGen</span></div>
+      <div class="icp-fill">ICP Fill-In: <span>[Berriz Design Build · Higgs Field · any RSD client pre-engagement]</span></div>
+      <div class="prompt-text" id="p-before">Create a faceless video explaining what [CLIENT/COMPANY] looked like before becoming the go-to [home design-build firm / luxury renovation studio / property marketing leader] in [MARKET]. Highlight the struggles, the early jobs that almost didn't happen, and the unlikely moment everything shifted. Make viewers feel how far the journey has come — and what clients almost missed out on.</div>
+      <button class="copy-btn" onclick="copyPrompt('p-before', this)">Copy Prompt</button>
+    </div>
+    <div class="prompt-card">
+      <div class="prompt-card-top"><div class="prompt-name">The Rise and Fall</div><span class="tool-pill seedance">Seedance</span></div>
+      <div class="icp-fill">ICP Fill-In: <span>[A competitor who cut corners · outdated listing photography market]</span></div>
+      <div class="prompt-text" id="p-rise">Create a faceless video explaining how [the old way of marketing luxury homes / a regional contractor who dominated the market] went from the obvious choice to losing clients to firms who moved faster. Focus on the peak, the warning signs they ignored, and the moment the market passed them by. Make viewers feel the momentum of both the rise and the collapse — and quietly see themselves in the story.</div>
+      <button class="copy-btn" onclick="copyPrompt('p-rise', this)">Copy Prompt</button>
+    </div>
+    <div class="prompt-card">
+      <div class="prompt-card-top"><div class="prompt-name">The Unexpected Winner</div><span class="tool-pill heygen">HeyGen</span></div>
+      <div class="icp-fill">ICP Fill-In: <span>[Small design-build firm wins over big-box · boutique media over national agencies]</span></div>
+      <div class="prompt-text" id="p-underdog">Create a faceless video explaining how an underdog [design-build firm / property marketing studio] unexpectedly defeated much larger competitors in [Northern Virginia / Central Virginia / DC Metro]. Focus on clever decisions, the advantages everyone else overlooked, and the key moments that changed the outcome. End by showing what clients gained by choosing the firm that moved differently.</div>
+      <button class="copy-btn" onclick="copyPrompt('p-underdog', this)">Copy Prompt</button>
+    </div>
+  </div>
+</div>
+<div class="section" style="margin-top:32px;">
+  <div class="section-header">
+    <div class="section-number">02</div>
+    <div class="section-info">
+      <div class="section-title">Industry Intelligence</div>
+      <div class="section-desc">Position RSD as the informed expert. Best for thought leadership and trust-building.</div>
+    </div>
+  </div>
+  <div class="prompt-grid">
+    <div class="prompt-card">
+      <div class="prompt-card-top"><div class="prompt-name">Hidden Truth</div><span class="tool-pill notebook">NotebookLM</span></div>
+      <div class="icp-fill">ICP Fill-In: <span>[Virtual tours · Matterport ROI · drone photography in luxury listings]</span></div>
+      <div class="prompt-text" id="p-hidden">Create a faceless viral video revealing something most people don't know about [how 3D virtual tours change the way luxury homes sell]. Begin with a shocking fact or claim, then gradually uncover the evidence. Build curiosity with every section and finish with a realization that challenges the way most homeowners and contractors think about property marketing.</div>
+      <button class="copy-btn" onclick="copyPrompt('p-hidden', this)">Copy Prompt</button>
+    </div>
+    <div class="prompt-card">
+      <div class="prompt-card-top"><div class="prompt-name">The Silent Revolution</div><span class="tool-pill seedance">Seedance</span></div>
+      <div class="icp-fill">ICP Fill-In: <span>[Matterport adoption · AI lead generation · drone regulation shift]</span></div>
+      <div class="prompt-text" id="p-silent">Create a faceless documentary about how [3D scanning technology / AI-powered lead generation] quietly transformed the way [luxury design-build firms / high-end real estate teams] win clients — while most of their competitors were still running the same print ads and cold calls. Explain how it happened and why its impact is larger than most in the industry realize.</div>
+      <button class="copy-btn" onclick="copyPrompt('p-silent', this)">Copy Prompt</button>
+    </div>
+    <div class="prompt-card">
+      <div class="prompt-card-top"><div class="prompt-name">The Hidden Opportunity</div><span class="tool-pill heygen">HeyGen</span></div>
+      <div class="icp-fill">ICP Fill-In: <span>[Virtual staging · pre-renovation 3D documentation · drone aerial for permits]</span></div>
+      <div class="prompt-text" id="p-opportunity">Create a faceless video revealing an opportunity in [luxury home marketing / design-build client acquisition] that most firms in [Northern Virginia / Central Virginia] are ignoring right now. Explain why it is overlooked, which firms are already quietly taking advantage of it, and what is likely to happen to firms that wait too long to act.</div>
+      <button class="copy-btn" onclick="copyPrompt('p-opportunity', this)">Copy Prompt</button>
+    </div>
+    <div class="prompt-card">
+      <div class="prompt-card-top"><div class="prompt-name">The Secret Strategy</div><span class="tool-pill notebook">NotebookLM</span></div>
+      <div class="icp-fill">ICP Fill-In: <span>[How top-tier design-build firms close without discounting · RSD GRAVITY system]</span></div>
+      <div class="prompt-text" id="p-secret">Create a faceless video revealing the hidden strategy that helped [the most successful luxury design-build firms / top property marketing agencies] outperform everyone else in their market. Explain the logic behind the strategy and why most competitors failed to notice it until it was too late to catch up.</div>
+      <button class="copy-btn" onclick="copyPrompt('p-secret', this)">Copy Prompt</button>
+    </div>
+  </div>
+</div>
+<div class="section" style="margin-top:32px;">
+  <div class="section-header">
+    <div class="section-number">03</div>
+    <div class="section-info">
+      <div class="section-title">Consequence &amp; Prediction</div>
+      <div class="section-desc">Create urgency and future-tension. Best for lead generation and cold audience content.</div>
+    </div>
+  </div>
+  <div class="prompt-grid">
+    <div class="prompt-card">
+      <div class="prompt-card-top"><div class="prompt-name">Future Documentary</div><span class="tool-pill seedance">Seedance</span></div>
+      <div class="icp-fill">ICP Fill-In: <span>[How NoVA homeowners chose contractors 2024-2026 · the 3D property era]</span></div>
+      <div class="prompt-text" id="p-future">Create a faceless documentary-style video about [how luxury homeowners in Northern Virginia chose their design-build partners] as if it were being explained in the year 2035. Start with a surprising statement, then reveal the key shifts that led to the outcome. Focus on turning points most firms missed and the lesson that separated the firms that scaled from the ones that disappeared.</div>
+      <button class="copy-btn" onclick="copyPrompt('p-future', this)">Copy Prompt</button>
+    </div>
+    <div class="prompt-card">
+      <div class="prompt-card-top"><div class="prompt-name">The Domino Effect</div><span class="tool-pill heygen">HeyGen</span></div>
+      <div class="icp-fill">ICP Fill-In: <span>[One bad listing photo kills a luxury home sale · skipping virtual tour costs six figures]</span></div>
+      <div class="prompt-text" id="p-domino">Create a faceless documentary showing how one decision — [choosing standard listing photography over a Matterport 3D tour] — triggered a chain reaction that changed the outcome of a [luxury home sale / high-end renovation reveal / contractor's pipeline]. Each consequence should naturally lead to the next, making the viewer reconsider a choice they thought was minor.</div>
+      <button class="copy-btn" onclick="copyPrompt('p-domino', this)">Copy Prompt</button>
+    </div>
+    <div class="prompt-card">
+      <div class="prompt-card-top"><div class="prompt-name">The Future of [Topic]</div><span class="tool-pill notebook">NotebookLM</span></div>
+      <div class="icp-fill">ICP Fill-In: <span>[Luxury home marketing · design-build client acquisition · 3D virtual tours]</span></div>
+      <div class="prompt-text" id="p-futureof">Create a faceless documentary predicting the future of [luxury property marketing / high-end design-build client acquisition] over the next decade. Base predictions on current trends in [Matterport adoption, AI lead generation, drone media, and digital-first buyer behavior]. Position the firms who move now as the ones who define the next era.</div>
+      <button class="copy-btn" onclick="copyPrompt('p-futureof', this)">Copy Prompt</button>
+    </div>
+    <div class="prompt-card">
+      <div class="prompt-card-top"><div class="prompt-name">Butterfly Effect</div><span class="tool-pill seedance">Seedance</span></div>
+      <div class="icp-fill">ICP Fill-In: <span>[One Matterport tour · one drone reel · one AI-qualified lead]</span></div>
+      <div class="prompt-text" id="p-butterfly">Create a faceless video showing how one seemingly small decision — [a single 3D virtual tour / one drone aerial reel / one AI-qualified lead system] — completely changed the trajectory of a [design-build firm's / luxury realtor's / home services contractor's] business. Explain the chain reaction step-by-step, each consequence larger than the last. End by showing what would have happened if that decision had never been made.</div>
+      <button class="copy-btn" onclick="copyPrompt('p-butterfly', this)">Copy Prompt</button>
+    </div>
+  </div>
+</div>
+<div class="section" style="margin-top:32px;">
+  <div class="section-header">
+    <div class="section-number">04</div>
+    <div class="section-info">
+      <div class="section-title">Tension &amp; Stakes</div>
+      <div class="section-desc">Urgency, competition, critical moments. Best for retargeting and warm-audience conversion.</div>
+    </div>
+  </div>
+  <div class="prompt-grid">
+    <div class="prompt-card">
+      <div class="prompt-card-top"><div class="prompt-name">Race Against Time</div><span class="tool-pill heygen">HeyGen</span></div>
+      <div class="icp-fill">ICP Fill-In: <span>[Spring listing season window · Q2 renovation booking deadline]</span></div>
+      <div class="prompt-text" id="p-race">Create a faceless documentary about a moment when [a luxury homeowner / a design-build firm] was racing against time to [capture a property before the listing window closed / fill their renovation calendar before Q3]. Focus on urgency, obstacles, and the critical decisions that determined the outcome. End with the final result — and what it cost those who waited.</div>
+      <button class="copy-btn" onclick="copyPrompt('p-race', this)">Copy Prompt</button>
+    </div>
+    <div class="prompt-card">
+      <div class="prompt-card-top"><div class="prompt-name">The Billion Dollar Mistake</div><span class="tool-pill notebook">NotebookLM</span></div>
+      <div class="icp-fill"><span>Industry-level decisions — Zillow, big box home improvement, national listing platforms</span></div>
+      <div class="prompt-text" id="p-mistake">Create a faceless documentary explaining the biggest mistake made by [a major real estate platform / a national home improvement brand]. Focus on the decision, why it seemed reasonable at the time, and how it created an opening that [boutique design-build firms / regional media agencies] used to build lasting client relationships the platform could never replicate.</div>
+      <button class="copy-btn" onclick="copyPrompt('p-mistake', this)">Copy Prompt</button>
+    </div>
+    <div class="prompt-card">
+      <div class="prompt-card-top"><div class="prompt-name">The Hidden War</div><span class="tool-pill seedance">Seedance</span></div>
+      <div class="icp-fill">ICP Fill-In: <span>[Traditional photography studios vs. 3D media firms · old-guard contractors vs. AI-powered agencies]</span></div>
+      <div class="prompt-text" id="p-war">Create a faceless documentary about the quiet competition between [traditional real estate photography studios] and [firms using Matterport 3D, drone, and AI media]. Explain the stakes, the strategies each side deployed, and the turning points that determined which approach clients moved toward. Make the outcome feel inevitable in hindsight — but surprising as it unfolds.</div>
+      <button class="copy-btn" onclick="copyPrompt('p-war', this)">Copy Prompt</button>
+    </div>
+    <div class="prompt-card">
+      <div class="prompt-card-top"><div class="prompt-name">Last One Standing</div><span class="tool-pill heygen">HeyGen</span></div>
+      <div class="icp-fill">ICP Fill-In: <span>[Why boutique design-build firms outlast national franchises in premium markets]</span></div>
+      <div class="prompt-text" id="p-last">Create a faceless documentary explaining why [boutique luxury design-build firms / regional property media agencies] survived when all of their larger competitors lost the clients they once controlled. Compare the key differences and strategic decisions that led to long-term loyalty — and show why the firms still standing made choices that felt risky at the time.</div>
+      <button class="copy-btn" onclick="copyPrompt('p-last', this)">Copy Prompt</button>
+    </div>
+  </div>
+</div>
+<div class="section" style="margin-top:32px;">
+  <div class="section-header">
+    <div class="section-number">05</div>
+    <div class="section-info">
+      <div class="section-title">Pivot &amp; Revelation</div>
+      <div class="section-desc">Reframe assumptions. Best for cold audiences and top-of-funnel awareness plays.</div>
+    </div>
+  </div>
+  <div class="prompt-grid">
+    <div class="prompt-card">
+      <div class="prompt-card-top"><div class="prompt-name">What If?</div><span class="tool-pill notebook">NotebookLM</span></div>
+      <div class="icp-fill">ICP Fill-In: <span>[What if Matterport never launched · what if drone media stayed commercial-only]</span></div>
+      <div class="prompt-text" id="p-whatif">Create a faceless video exploring what would have happened if [3D virtual tours had never become available to residential real estate and design-build firms]. Build a believable alternate timeline — how luxury homeowners would still be scheduling in-person showings for every prospect. Make the current moment feel like an opportunity that did not have to exist.</div>
+      <button class="copy-btn" onclick="copyPrompt('p-whatif', this)">Copy Prompt</button>
+    </div>
+    <div class="prompt-card">
+      <div class="prompt-card-top"><div class="prompt-name">The Prediction</div><span class="tool-pill heygen">HeyGen</span></div>
+      <div class="icp-fill">ICP Fill-In: <span>[Someone who called the 3D media shift early · early Matterport adopters]</span></div>
+      <div class="prompt-text" id="p-prediction">Create a faceless documentary about a prediction that sounded impossible at the time but turned out to be correct — that [buyers would tour luxury homes in 3D before ever visiting in person / design-build firms would win clients before the first phone call through digital media alone]. Explain who saw it coming, why the industry dismissed it, and how the firms that acted early built the most durable pipelines.</div>
+      <button class="copy-btn" onclick="copyPrompt('p-prediction', this)">Copy Prompt</button>
+    </div>
+    <div class="prompt-card">
+      <div class="prompt-card-top"><div class="prompt-name">The Moment Everything Changed</div><span class="tool-pill seedance">Seedance</span></div>
+      <div class="icp-fill">ICP Fill-In: <span>[When Matterport hit residential · when drone media became affordable · AI lead gen inflection]</span></div>
+      <div class="prompt-text" id="p-moment">Create a faceless video focused on a single moment that permanently changed the future of [luxury property marketing / design-build client acquisition in the DC Metro region]. Build up to the event, explain why it mattered more than anyone realized at the time, and show the consequences — for the firms that moved and the ones that watched.</div>
+      <button class="copy-btn" onclick="copyPrompt('p-moment', this)">Copy Prompt</button>
+    </div>
+    <div class="prompt-card">
+      <div class="prompt-card-top"><div class="prompt-name">The Untold Story</div><span class="tool-pill heygen">HeyGen</span></div>
+      <div class="icp-fill">ICP Fill-In: <span>[Behind the first Matterport shoot · how a single RSD session changed a client's pipeline]</span></div>
+      <div class="prompt-text" id="p-untold">Create a faceless video about the lesser-known story behind [how a single 3D virtual tour session / one drone media package] changed the way a [luxury homeowner / design-build firm / high-end contractor] thought about their marketing — and what happened to their pipeline in the months that followed. Focus on the details and decisions that rarely get told, but had the largest impact.</div>
+      <button class="copy-btn" onclick="copyPrompt('p-untold', this)">Copy Prompt</button>
+    </div>
+    <div class="prompt-card">
+      <div class="prompt-card-top"><div class="prompt-name">The Story Nobody Saw Coming</div><span class="tool-pill notebook">NotebookLM</span></div>
+      <div class="icp-fill">ICP Fill-In: <span>[An RSD client outcome · a regional firm's unexpected rise · a market shift nobody predicted]</span></div>
+      <div class="prompt-text" id="p-nobody">Create a faceless documentary about [a design-build firm / a luxury property team / a home services contractor] that unexpectedly changed the way their entire local market thought about [client acquisition / property presentation / renovation marketing]. Structure the story to build surprise, hold curiosity, and end with a lesson the viewer will not forget — and will share.</div>
+      <button class="copy-btn" onclick="copyPrompt('p-nobody', this)">Copy Prompt</button>
+    </div>
+  </div>
+</div>
+<div class="footer">
+  <div class="footer-left">
+    <strong>Real Space Digital · Internal Asset</strong>
+    Zack Jackson &amp; Joel Kaminski · June 2026 · ZDJ-VENTURES888/rsd-internal<br>
+    Base prompt credit: harry0703/MoneyPrinterTurbo · Adapted for RSD ICPs · Not for external distribution.
+  </div>
+  <div class="footer-right">rsd-internal · viral-prompts/</div>
+</div>
+<script>
+function copyPrompt(id, btn) {
+  const el = document.getElementById(id);
+  const text = el.innerText;
+  navigator.clipboard.writeText(text).then(() => {
+    const orig = btn.textContent;
+    btn.textContent = 'Copied';
+    btn.classList.add('copied');
+    setTimeout(() => { btn.textContent = orig; btn.classList.remove('copied'); }, 1800);
+  }).catch(() => {
+    const range = document.createRange();
+    range.selectNode(el);
+    window.getSelection().removeAllRanges();
+    window.getSelection().addRange(range);
+  });
+}
+</script>
+</body>
+</html>
