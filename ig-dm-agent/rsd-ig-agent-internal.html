@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8"/><meta name="viewport" content="width=device-width,initial-scale=1.0"/>
-<title>RSD IG DM Agent â Internal Build Doc v2.0</title>
+<title>RSD IG DM Agent — Internal Build Doc v2.0</title>
 <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;1,400&family=Outfit:wght@300;400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet"/>
 <style>
 :root{--navy:#0B2545;--navy-deep:#061828;--navy-mid:#132f57;--gold:#C9A961;--gold-light:#dfc48a;--gold-dim:rgba(201,169,97,0.13);--cream:#F0EDE6;--cream-dark:#e0dbd0;--green:#22c55e;--amber:#f59e0b;--red:#ef4444;--blue:#3b82f6;--border:rgba(201,169,97,0.18);--text:#1a2a3a;--muted:#4a5e72;}
@@ -23,7 +23,7 @@ nav a.progress-link{border-left-color:transparent;}
 nav a.progress-link:hover,nav a.progress-link.active{border-left-color:var(--amber);background:rgba(245,158,11,0.07);}
 nav a.progress-link .nn{color:var(--amber);}
 .nav-foot{margin-top:auto;padding:18px 24px;border-top:1px solid rgba(201,169,97,0.1);font-size:10px;color:rgba(240,237,230,0.25);line-height:1.6;}
-main{margin-left:270px;flex:1;min-width:0;overflow-x:hidden;}
+main{margin-left:270px;flex:1;min-width:0;}
 .hero{background:var(--navy);padding:56px 0 44px;position:relative;overflow:hidden;}
 .hero::after{content:'';position:absolute;bottom:0;left:0;right:0;height:1px;background:linear-gradient(90deg,transparent,var(--gold),transparent);opacity:0.35;}
 .hero::before{content:'';position:absolute;top:-80px;right:-80px;width:360px;height:360px;border-radius:50%;background:radial-gradient(circle,rgba(201,169,97,0.06) 0%,transparent 70%);}
@@ -84,9 +84,9 @@ p{font-size:14px;line-height:1.75;color:var(--text);margin-bottom:12px;}
 .pc-price{font-size:22px;font-weight:600;color:var(--gold-light);margin-bottom:10px;}
 .pc-price span{font-size:12px;font-weight:400;color:rgba(240,237,230,0.45);}
 .pc-item{font-size:12px;color:rgba(240,237,230,0.65);margin-bottom:4px;display:flex;gap:7px;align-items:flex-start;}
-.pc-item::before{content:'Â·';color:var(--gold);margin-top:1px;}
+.pc-item::before{content:'·';color:var(--gold);margin-top:1px;}
 
-/* ââ Build Progress Section styles ââ */
+/* ── Build Progress Section styles ── */
 .progress-header{background:linear-gradient(135deg,var(--navy-deep) 0%,#1a3a5c 100%);border:1px solid rgba(245,158,11,0.25);border-radius:10px;padding:24px 28px;margin-bottom:24px;position:relative;overflow:hidden;}
 .progress-header::before{content:'';position:absolute;top:-40px;right:-40px;width:200px;height:200px;border-radius:50%;background:radial-gradient(circle,rgba(245,158,11,0.06) 0%,transparent 70%);}
 .ph-label{font-size:9px;font-weight:600;letter-spacing:0.22em;text-transform:uppercase;color:var(--amber);margin-bottom:8px;}
@@ -152,10 +152,17 @@ p{font-size:14px;line-height:1.75;color:var(--text);margin-bottom:12px;}
 
 footer{max-width:920px;margin:0 auto 60px;padding:24px 60px 0;border-top:1px solid var(--border);display:flex;justify-content:space-between;align-items:center;font-size:11px;color:var(--muted);flex-wrap:wrap;gap:8px;}
 .fb{font-family:'Cormorant Garamond',serif;font-size:16px;color:var(--navy);font-weight:600;}
-@media(max-width:900px){nav{display:none;}main{margin-left:0;width:100%;}.hero-inner,.content,footer{padding-left:20px!important;padding-right:20px!important;max-width:100%;}.issue-grid,.prereq-grid,.stack-grid,.phase-grid,.icp-grid{grid-template-columns:1fr;}.af-nodes{flex-direction:column;align-items:flex-start;}.af-arrow{transform:rotate(90deg);}.h-stats{gap:18px;}.phase-grid{grid-template-columns:1fr;}}
+@media(max-width:900px){nav{display:none;}main{margin-left:0;width:100%;}.hero-inner,.content,footer{padding-left:20px!important;padding-right:20px!important;max-width:100%;}.issue-grid,.prereq-grid,.stack-grid,.phase-grid,.icp-grid{grid-template-columns:1fr;}.af-nodes{flex-direction:column;align-items:flex-start;}.af-arrow{transform:rotate(90deg);}.h-stats{gap:18px;}}
 </style>
 </head>
-<body>el">Overview</div>
+<body>
+<nav>
+  <div class="nav-brand">
+    <div class="nb-word">Real Space Digital</div>
+    <div class="nb-sub">IG DM Agent — Internal v2.0</div>
+    <div class="nb-badge">Backend Build Active</div>
+  </div>
+  <div class="ns-label">Overview</div>
   <a href="#pricing"><span class="nn">01</span> Service & Pricing Menu</a>
   <a href="#icp"><span class="nn">02</span> ICP Routing Map</a>
   <div class="ns-label">Agent Setup</div>
@@ -177,9 +184,9 @@ footer{max-width:920px;margin:0 auto 60px;padding:24px 60px 0;border-top:1px sol
 </nav>
 <main>
 <div class="hero">
-  <div class="hero-inner"><div class="h-eye">Real Space Digital â Internal Operations</div>
+  <div class="hero-inner"><div class="h-eye">Real Space Digital — Internal Operations</div>
   <h1>Instagram DM Agent<br><em>Complete Build Guide v2.0</em></h1>
-  <p class="h-desc">Custom Node.js Backend Â· ManyChat + Claude AI Â· Rapid Response + After-Hours Â· Phase 1 / 2 / 3 Partnership Structure Â· Supabase Â· HighLevel CRM</p>
+  <p class="h-desc">Custom Node.js Backend · ManyChat + Claude AI · Rapid Response + After-Hours · Phase 1 / 2 / 3 Partnership Structure · Supabase · HighLevel CRM</p>
   <div class="h-stats">
     <div class="h-stat"><div class="v">&lt;3s</div><div class="l">Response Time</div></div>
     <div class="h-stat"><div class="v">24/7</div><div class="l">Always On</div></div>
@@ -188,7 +195,7 @@ footer{max-width:920px;margin:0 auto 60px;padding:24px 60px 0;border-top:1px sol
     <div class="h-stat"><div class="v">~$0.08</div><div class="l">Per Conversation</div></div>
     <div class="h-stat"><div class="v">7</div><div class="l">Linear Issues</div></div>
   </div>
-</div><!-- /hero-inner --></div>
+</div></div>
 <div class="content">
 
 <!-- SECTION 01 PRICING -->
@@ -201,11 +208,11 @@ footer{max-width:920px;margin:0 auto 60px;padding:24px 60px 0;border-top:1px sol
     <thead><tr><th>Service</th><th>Investment</th></tr></thead>
     <tbody>
       <tr><td>Foundation Package (GBP, CRM, social planner, lead capture)</td><td><strong>$2,997</strong></td></tr>
-      <tr><td>Matterport 3D Virtual Tour â single location</td><td><strong>$1,497</strong></td></tr>
+      <tr><td>Matterport 3D Virtual Tour — single location</td><td><strong>$1,497</strong></td></tr>
       <tr><td>Annual Matterport Refresh / Rescan</td><td><strong>$497</strong></td></tr>
       <tr><td>Photo + Drone Day (exterior + aerial)</td><td><strong>$797</strong></td></tr>
-      <tr><td>Feature Origin Story Video (60â90 sec cinematic)</td><td><strong>$2,497</strong></td></tr>
-      <tr><td>Mission / Authority Mini-Doc (3â5 min)</td><td><strong>$4,997</strong></td></tr>
+      <tr><td>Feature Origin Story Video (60–90 sec cinematic)</td><td><strong>$2,497</strong></td></tr>
+      <tr><td>Mission / Authority Mini-Doc (3–5 min)</td><td><strong>$4,997</strong></td></tr>
       <tr><td>Customer Testimonial Video Pack (3 videos)</td><td><strong>$1,297</strong></td></tr>
       <tr><td>Launch Booster Pack (Matterport + Origin Story + 3 Testimonials)</td><td><strong>$3,997</strong></td></tr>
     </tbody>
@@ -215,10 +222,10 @@ footer{max-width:920px;margin:0 auto 60px;padding:24px 60px 0;border-top:1px sol
   <table class="dt">
     <thead><tr><th>Service</th><th>Investment</th></tr></thead>
     <tbody>
-      <tr><td>Mascot / Brand Avatar Build â photo avatar, voice, brand kit</td><td><strong>$997</strong></td></tr>
-      <tr><td>Full Clone Avatar â photorealistic, voice clone, 10 launch videos, multilingual</td><td><strong>$9,000</strong> (25% down)</td></tr>
+      <tr><td>Mascot / Brand Avatar Build — photo avatar, voice, brand kit</td><td><strong>$997</strong></td></tr>
+      <tr><td>Full Clone Avatar — photorealistic, voice clone, 10 launch videos, multilingual</td><td><strong>$9,000</strong> (25% down)</td></tr>
       <tr><td>Additional avatar videos beyond phase allotment</td><td><strong>$97 / video</strong></td></tr>
-      <tr><td>Multilingual avatar â per language per month</td><td><strong>$297 / mo</strong></td></tr>
+      <tr><td>Multilingual avatar — per language per month</td><td><strong>$297 / mo</strong></td></tr>
       <tr><td>Custom avatar variant</td><td><strong>$397</strong></td></tr>
     </tbody>
   </table>
@@ -226,9 +233,9 @@ footer{max-width:920px;margin:0 auto 60px;padding:24px 60px 0;border-top:1px sol
   <h3>Monthly Partnership Phases</h3>
   <div class="phase-grid">
     <div class="phase-card">
-      <span class="pc-badge">Phase 1 â Entry</span>
+      <span class="pc-badge">Phase 1 — Entry</span>
       <div class="pc-name">Phase 1 Entry</div>
-      <div class="pc-price">$1,200â1,497<span> / mo</span></div>
+      <div class="pc-price">$1,200–1,497<span> / mo</span></div>
       <div class="pc-item">8 posts / month</div>
       <div class="pc-item">1 avatar video / mo</div>
       <div class="pc-item">GBP + HighLevel reviews</div>
@@ -236,9 +243,9 @@ footer{max-width:920px;margin:0 auto 60px;padding:24px 60px 0;border-top:1px sol
       <div class="pc-item">Direct access Zack & Joel</div>
     </div>
     <div class="phase-card rec">
-      <span class="pc-badge">â Phase 2 â Growth (Recommended)</span>
+      <span class="pc-badge">★ Phase 2 — Growth (Recommended)</span>
       <div class="pc-name">Phase 2 Growth</div>
-      <div class="pc-price">$1,997â2,997<span> / mo</span></div>
+      <div class="pc-price">$1,997–2,997<span> / mo</span></div>
       <div class="pc-item">16 posts + 4 reels</div>
       <div class="pc-item">4 avatar videos / mo</div>
       <div class="pc-item">Matterport + booking integration</div>
@@ -246,14 +253,14 @@ footer{max-width:920px;margin:0 auto 60px;padding:24px 60px 0;border-top:1px sol
       <div class="pc-item">Bi-weekly strategy sessions</div>
     </div>
     <div class="phase-card">
-      <span class="pc-badge">Phase 3 â Authority</span>
+      <span class="pc-badge">Phase 3 — Authority</span>
       <div class="pc-name">Phase 3 Authority</div>
       <div class="pc-price">$4,997<span> / mo</span></div>
       <div class="pc-item">24 posts + 8 reels</div>
       <div class="pc-item">8 avatar videos / mo</div>
       <div class="pc-item">Matterport included</div>
       <div class="pc-item">Paid ads + PR distribution</div>
-      <div class="pc-item">Weekly strategy Â· 24/7 manager</div>
+      <div class="pc-item">Weekly strategy · 24/7 manager</div>
     </div>
   </div>
 
@@ -263,7 +270,7 @@ footer{max-width:920px;margin:0 auto 60px;padding:24px 60px 0;border-top:1px sol
     <tbody>
       <tr><td>Operations Authority Layer (AI agent, morning briefing, follow-up, SOPs)</td><td><strong>+$1,997/mo</strong> + $2,188 setup</td></tr>
       <tr><td>AI Booking Agent build + training (standalone)</td><td><strong>$797</strong></td></tr>
-      <tr><td>AI Chat Widget â Basic (FAQ + booking redirect)</td><td><strong>$497 setup + $197/mo</strong></td></tr>
+      <tr><td>AI Chat Widget — Basic (FAQ + booking redirect)</td><td><strong>$497 setup + $197/mo</strong></td></tr>
       <tr><td>Monthly AI Agent Maintenance + Retraining</td><td><strong>$297 / mo</strong></td></tr>
     </tbody>
   </table>
@@ -273,7 +280,7 @@ footer{max-width:920px;margin:0 auto 60px;padding:24px 60px 0;border-top:1px sol
     <thead><tr><th>Configuration</th><th>Year 1 Total</th></tr></thead>
     <tbody>
       <tr><td>Phase 1 Entry + Launch Booster</td><td>$24,955</td></tr>
-      <tr><td><strong>Phase 2 Growth + Launch Booster â RSD Rec</strong></td><td><strong>$42,958</strong></td></tr>
+      <tr><td><strong>Phase 2 Growth + Launch Booster ★ RSD Rec</strong></td><td><strong>$42,958</strong></td></tr>
       <tr><td>Phase 3 Authority + Add-Ons</td><td>$64,258</td></tr>
       <tr><td>Phase 2 Growth + Commerce Layer</td><td>$57,906</td></tr>
       <tr><td>Phase 2 Growth + Ops Authority</td><td>$62,863</td></tr>
@@ -281,7 +288,7 @@ footer{max-width:920px;margin:0 auto 60px;padding:24px 60px 0;border-top:1px sol
       <tr><td>Phase 2 Growth + Full Stack</td><td>$90,808</td></tr>
     </tbody>
   </table>
-  <div class="callout info"><span>â¹</span><div class="callout-body"><strong>Performance Guarantee</strong>3 qualified inbound conversations in 30 days of confirmed go-live â or full refund. No conditions. 15% Early Conviction Rate at $6,000+ commitment. 15% Year 2 loyalty discount locked at signing.</div></div>
+  <div class="callout info"><span>ℹ</span><div class="callout-body"><strong>Performance Guarantee</strong>3 qualified inbound conversations in 30 days of confirmed go-live — or full refund. No conditions. 15% Early Conviction Rate at $6,000+ commitment. 15% Year 2 loyalty discount locked at signing.</div></div>
 </section>
 
 <!-- SECTION 02 ICP -->
@@ -290,109 +297,66 @@ footer{max-width:920px;margin:0 auto 60px;padding:24px 60px 0;border-top:1px sol
   <div class="icp-grid">
     <div class="icp-card"><div class="ic-label">ICP 01</div><div class="ic-title">Commercial RE Developer</div><div class="ic-entry">Entry: Matterport + Drone Bundle</div><div class="ic-entry">Path: Phase 2 Growth or Phase 3 Authority</div></div>
     <div class="icp-card"><div class="ic-label">ICP 02</div><div class="ic-title">Property Manager</div><div class="ic-entry">Entry: Matterport Tour (recurring)</div><div class="ic-entry">Path: Phase 1 Entry + annual refresh</div></div>
-    <div class="icp-card"><div class="ic-label">ICP 03</div><div class="ic-title">Residential Listing Agent</div><div class="ic-entry">Entry: Matterport Ã  la carte $1,497</div><div class="ic-entry">Path: upsell drone on next listing</div></div>
+    <div class="icp-card"><div class="ic-label">ICP 03</div><div class="ic-title">Residential Listing Agent</div><div class="ic-entry">Entry: Matterport à la carte $1,497</div><div class="ic-entry">Path: upsell drone on next listing</div></div>
     <div class="icp-card"><div class="ic-label">ICP 04</div><div class="ic-title">Architect / Design-Build</div><div class="ic-entry">Entry: Photo + Drone Day + Matterport</div><div class="ic-entry">Path: project scope on call</div></div>
     <div class="icp-card"><div class="ic-label">ICP 05</div><div class="ic-title">Hospitality / Retail</div><div class="ic-entry">Entry: Matterport + AI Chat Widget</div><div class="ic-entry">Path: Phase 1 Entry + AI widget</div></div>
-    <div class="icp-card"><div class="ic-label">ICP 06</div><div class="ic-title">Owner â Content Scale</div><div class="ic-entry">Entry: Mascot $997 or Clone $9k</div><div class="ic-entry">Path: pair with any phase</div></div>
+    <div class="icp-card"><div class="ic-label">ICP 06</div><div class="ic-title">Owner — Content Scale</div><div class="ic-entry">Entry: Mascot $997 or Clone $9k</div><div class="ic-entry">Path: pair with any phase</div></div>
     <div class="icp-card"><div class="ic-label">ICP 07</div><div class="ic-title">After-Hours Missed Leads</div><div class="ic-entry">Entry: Operations Authority Layer</div><div class="ic-entry">Path: AI Booking Agent build</div></div>
     <div class="icp-card"><div class="ic-label">ICP 08</div><div class="ic-title">Local Service Business</div><div class="ic-entry">Entry: Social Pack + GBP setup</div><div class="ic-entry">Path: Phase 1 Entry + Micro-Campaign</div></div>
   </div>
 </section>
 
-<!-- SECTION 03 PROMPT -->
+<!-- SECTION 03 -->
 <section id="prompt">
   <div class="sh"><span class="sn">03</span><h2>System Prompt v2.0</h2></div>
-  <p>The system prompt lives in <code>config/systemPrompt.js</code> in the custom backend. It is injected automatically on every Claude API call. Phase 1 Entry / Phase 2 Growth / Phase 3 Authority naming is used throughout â no reef-themed names.</p>
-  <p>If using ManyChat's native integration (without the custom backend), paste the full contents of <code>system_prompt_v2.txt</code> into ManyChat's Claude system prompt field. Do not truncate.</p>
-  <div class="callout warn"><span>â </span><div class="callout-body"><strong>Priority if truncated (ManyChat native only)</strong>Voice Rules and ICP Routing must remain intact. A generic opener erodes trust with the exact buyer RSD targets.</div></div>
-  <table class="dt">
-    <thead><tr><th>Section</th><th>Purpose</th><th>Priority</th></tr></thead>
-    <tbody>
-      <tr><td>Voice & Tone</td><td>Forbidden phrases, sentence style, energy calibration</td><td>Critical</td></tr>
-      <tr><td>Offer Set</td><td>All services with pricing anchors + Phase 1/2/3 names</td><td>Critical</td></tr>
-      <tr><td>ICP Routing</td><td>Match lead to right entry offer and phase path</td><td>Critical</td></tr>
-      <tr><td>GRAVITY Framework</td><td>5-question qualification over 3â5 exchanges</td><td>Critical</td></tr>
-      <tr><td>Objection Handling</td><td>7 pre-scripted responses in RSD voice</td><td>High</td></tr>
-      <tr><td>Human Handoff Trigger</td><td>Stop conditions and handoff message</td><td>Critical</td></tr>
-      <tr><td>After Hours Protocol</td><td>6PMâ8AM ET and weekend coverage</td><td>High</td></tr>
-      <tr><td>JSON Response Format</td><td>Structured output for backend state tracking</td><td>Critical (backend mode)</td></tr>
-      <tr><td>Hard Limits</td><td>What Claude must never do</td><td>Critical</td></tr>
-    </tbody>
-  </table>
-  <div class="code-block">
-    <div class="code-label">Claude Configuration â Custom Backend</div>
-    <pre>Model:      claude-sonnet-4-5
-Max Tokens: 1024
-Max Turns:  8 (enforced by backend)
-System:     Injected dynamically from config/systemPrompt.js
-            isAfterHours flag passed per request</pre>
-  </div>
+  <p>The system prompt lives in <code>config/systemPrompt.js</code> in the custom backend. It is injected automatically on every Claude API call. Phase 1 Entry / Phase 2 Growth / Phase 3 Authority naming is used throughout — no reef-themed names.</p>
+  <div class="callout warn"><span>⚠</span><div class="callout-body"><strong>Priority if truncated</strong>Voice Rules and ICP Routing must remain intact.</div></div>
+  <div class="code-block"><div class="code-label">Claude Configuration — Custom Backend</div><pre>Model: claude-sonnet-4-5 | Max Tokens: 1024 | Max Turns: 8</pre></div>
 </section>
 
-<!-- SECTION 04 MANYCHAT -->
+<!-- SECTION 04 -->
 <section id="manychat">
   <div class="sh"><span class="sn">04</span><h2>ManyChat Setup</h2></div>
-  <div class="callout success"><span>â</span><div class="callout-body"><strong>Custom Backend Mode</strong>ManyChat handles Instagram connection + DM delivery only. AI logic runs in the custom backend. Use External Request blocks â not ManyChat's native Claude integration â to call your deployed server.</div></div>
-  <div class="steps">
-    <div class="step"><div class="snum">0</div><div class="sbody"><div class="stitle">Account Readiness â Complete First</div><ul class="checklist"><li>@realspace.digital confirmed as Instagram Business account</li><li>Instagram linked to active Facebook Page with Admin access</li><li>Instagram DMs open â Privacy settings not restricted</li><li>Backend server deployed and /health returning 200</li><li>Supabase schema applied (docs/schema.sql)</li><li>All .env variables set on server</li></ul></div></div>
-    <div class="step"><div class="snum">1</div><div class="sbody"><div class="stitle">Create ManyChat Account + Connect IG</div><p>manychat.com â Get Started â Instagram as primary channel â connect Facebook Page linked to @realspace.digital â grant all permissions â upgrade to Pro ($15/mo).</p></div></div>
-    <div class="step"><div class="snum">2</div><div class="sbody"><div class="stitle">Build Automation Flow</div><p>Automation â New Automation â Trigger: User Comments â keyword â Specific Post. Enable Public Reply (4 variations). Add 1â2s delay block.</p></div></div>
-    <div class="step"><div class="snum">3</div><div class="sbody"><div class="stitle">Add Opener Block (is_opener = true)</div><p>First DM sent after keyword trigger. Add External Request block with is_opener: true. Response field <code>reply</code> â send as DM text.</p></div></div>
-    <div class="step"><div class="snum">4</div><div class="sbody"><div class="stitle">Configure External Request Loop</div><p>Wait for User Input â External Request â Send DM from <code>{{reply}}</code> â check <code>{{handoff_triggered}}</code> â if true: exit loop. If false: loop back to Wait.</p></div></div>
-    <div class="step"><div class="snum">5</div><div class="sbody"><div class="stitle">External Request Configuration</div>
-    <div class="code-block" style="margin-top:10px;">
-      <div class="code-label">ManyChat External Request Settings</div>
-      <pre>URL:    https://your-domain.com/webhook/manychat
+  <div class="callout success"><span>✓</span><div class="callout-body"><strong>Custom Backend Mode</strong>ManyChat handles IG connection + DM delivery only. Use External Request blocks — not native Claude integration.</div></div>
+  <div class="code-block"><div class="code-label">External Request Settings</div><pre>URL: https://your-domain.com/webhook/manychat
 Method: POST
-Headers:
-  x-webhook-secret: {your_secret}
-  Content-Type: application/json
-
-Body:
-{
-  "subscriber_id": "{{subscriber.id}}",
-  "name": "{{subscriber.name}}",
-  "message": "{{last_user_input}}",
-  "keyword": "TOUR",
-  "is_opener": false
-}
-
-Save response to custom fields:
-  rsd_reply      â reply
-  rsd_status     â status
-  rsd_calendly   â trigger_calendly
-  rsd_handoff    â handoff_triggered</pre>
-    </div>
-    </div></div>
-  </div>
+Header: x\"webhook-secret: {your_secret}
+Body: {"subscriber_id":"{{subscriber.id}}", "name":"{{subscriber.name}}", "message":"{{last_user_input}}", "keyword":"TOUR", "is_opener":false}
+Save: rsd_reply ← reply | rsd_status ← status | rsd_handoff ← handoff_triggered</pre></div>
 </section>
 
-<!-- SECTION 05 KEYWORDS -->
+<!-- SECTION 05 -->
 <section id="keywords">
   <div class="sh"><span class="sn">05</span><h2>Keyword Guide</h2></div>
-  <p>One keyword per post. Specific post only â never Any Post. Include keyword CTA in caption copy.</p>
   <div class="kw-grid">
     <div class="kw-card"><span class="kw">TOUR</span><span class="kn">Matterport showcase</span></div>
     <div class="kw-card"><span class="kw">AERIAL</span><span class="kn">Drone content</span></div>
     <div class="kw-card"><span class="kw">SCOPE</span><span class="kn">Large project / commercial</span></div>
-    <div class="kw-card"><span class="kw">SYSTEM</span><span class="kn">AI lead gen content</span></div>
+    <div class="kw-card"><span class="kw">SYSTEM</span><span class="kn">AI lead gen</span></div>
     <div class="kw-card"><span class="kw">AVATAR</span><span class="kn">Clone / media scale</span></div>
     <div class="kw-card"><span class="kw">AFTER5</span><span class="kn">After-hours ops</span></div>
     <div class="kw-card"><span class="kw">PRICING</span><span class="kn">Package / offer posts</span></div>
-    <div class="kw-card"><span class="kw">INFO</span><span class="kn">General â monitor closely</span></div>
+    <div class="kw-card"><span class="kw">INFO</span><span class="kn">General — monitor closely</span></div>
   </div>
 </section>
 
-<!-- SECTION 06 RAPID RESPONSE -->
-<section id="rapid">
-  <div class="sh"><span class="sn">06</span><h2>Rapid Response Live Agent</h2></div>
-  <p>Under 3-second response, 24/7, with human handoff within 60 minutes on qualified leads during business hours. In custom backend mode, after-hours detection is automatic via <code>utils/afterHours.js</code>.</p>
-  <table class="dt">
-    <thead><tr><th>Setting</th><th>Value</th></tr></thead>
-    <tbody>
-      <tr><td>Response latency target</td><td>&lt;3 seconds</td></tr>
-      <tr><td>Max turns</td><td>8 (enforced by backend â not ManyChat)</td></tr>
-      <tr><td>After-hours detection</td><td>Automatic â ET timezone Â· 8AMâ6PM MonâFri</td></tr>
+<!-- SECTIONS 06-12 -->
+<section id="rapid"><div class="sh"><span class="sn">06</span><h2>Rapid Response Live Agent</h2></div><p>Under 3-second response, 24/7, with human handoff within 60 minutes on qualified leads during business hours. After-hours detection is automatic via <code>utils/afterHours.js</code>.</p></section>
+
+<section id="afterhours"><div class="sh"><span class="sn">07</span><h2>After Hours Support Layer</h2></div><p>Active 6PM–8AM ET and all day weekends. Hot leads flagged in Supabase and surfaced via <code>GET /admin/briefing</code>.</p><div class="code-block"><div class="code-label">After Hours Capture</div><pre>"Know that our team is currently offline — I will make sure this reaches them first thing. Can I confirm your name, best contact, and a one-line summary of what you are working on so nothing gets lost?"</pre></div></section>
+
+<section id="avatar"><div class="sh"><span class="sn">08</span><h2>Avatar & Infinite Scale Media</h2></div><table class="dt"><thead><tr><th>Product</th><th>Investment</th><th>Output</th></tr></thead><tbody><tr><td>Mascot Avatar Build</td><td>$997 one-time</td><td>Brand avatar in client's voice · allotment per phase</td></tr><tr><td>Full Clone Avatar</td><td>$9,000 (25% down)</td><td>Photorealistic · voice clone · 10 launch videos · limitless generation · 100% client ownership</td></tr><tr><td>Additional videos</td><td>$97 / video</td><td>Beyond phase allotment</td></tr></tbody></table><h3>Avatar Video Allotments by Phase</h3><table class="dt"><thead><tr><th>Phase</th><th>Videos / Month</th></tr></thead><tbody><tr><td>Phase 1 Entry</td><td>1</td></tr><tr><td>Phase 2 Growth</td><td>4</td></tr><tr><td>Phase 3 Authority</td><td>8</td></tr><tr><td>Additional (any phase)</td><td>$97 / video</td></tr></tbody></table></section>
+
+<section id="social"><div class="sh"><span class="sn">09</span><h2>Social Media Packs</h2></div><table class="dt"><thead><tr><th>Pack</th><th>Investment</th><th>Pair With</th></tr></thead><tbody><tr><td>Additional post beyond phase allotment</td><td>$25 / post</td><td>Any phase</td></tr><tr><td>Additional reel beyond phase allotment</td><td>$97 / reel</td><td>Any phase</td></tr><tr><td>Trip / Event Micro-Campaign</td><td>$497</td><td>Phase 1 Entry — event bursts</td></tr><tr><td>Grand Opening 6-Week Ramp</td><td>$2,997</td><td>Phase 2 Growth — new location launch</td></tr></tbody></table></section>
+
+<section id="golive"><div class="sh"><span class="sn">10</span><h2>Go-Live Checklist</h2></div><ul class="checklist"><li>Backend deployed — /health returns 200</li><li>Supabase schema applied (docs/schema.sql)</li><li>All .env vars set</li><li>ManyChat Pro active ($15/mo)</li><li>External Request block configured</li><li>All 5 persona tests run and passed</li></ul></section>
+
+<section id="personas"><div class="sh"><span class="sn">11</span><h2>Persona Test Scripts</h2></div><table class="dt"><thead><tr><th>Persona</th><th>Comment</th><th>Expected</th></tr></thead><tbody><tr><td><strong>A — Qualified Commercial</strong></td><td>TOUR</td><td>GRAVITY ₒ budget confirmed ₒ Calendly offered ₒ GHL contact created</td></tr><tr><td><strong>B — Unqualified</strong></td><td>TOUR</td><td>Brief honest answer, no Calendly push, clean close</td></tr><tr><td><strong>C — Avatar Scale</strong></td><td>AVATAR</td><td>Avatar + social pack positioning</td></tr><tr><td><strong>D — After-Hours</strong></td><td>AFTER5</td><td>After-hours AI agent + Ops Authority Layer</td></tr><tr><td><strong>E — Bot Check</strong></td><td>TOUR</td><td>Honest AI disclosure + offer to connect team</td></tr></tbody></table></section>
+
+<section id="maintenance"><div class="sh"><span class="sn">12</span><h2>Maintenance Schedule</h2></div><table class="dt"><thead><tr><th>Task</th><th>Frequency</th><th>Owner</th></tr></thead><tbody><tr><td>Review ManyChat conversation logs</td><td>Weekly</td><td>Zack / Joel</td></tr><tr><td>Check Claude API spend</td><td>Weekly</td><td>Zack</td></tr><tr><td>Review GET /admin/briefing for missed leads</td><td>Daily (7AM)</td><td>Zack</td></tr><tr><td>Refine system prompt (config/systemPrompt.js)</td><td>Monthly or 50+ convos</td><td>Zack</td></tr><tr><td>Update keyword-to-post pairings</td><td>Per new post</td><td>Joel</td></tr></tbody></table></section>
+tr><td>Response latency target</td><td>&lt;3 seconds</td></tr>
+      <tr><td>Max turns</td><td>8 (enforced by backend — not ManyChat)</td></tr>
+      <tr><td>After-hours detection</td><td>Automatic — ET timezone · 8AM–6PM Mon–Fri</td></tr>
       <tr><td>Human handoff SLA</td><td>60 min during business hours</td></tr>
       <tr><td>Handoff alert</td><td>Email + optional Twilio SMS via <code>services/notifications.js</code></td></tr>
     </tbody>
@@ -402,10 +366,10 @@ Save response to custom fields:
 <!-- SECTION 07 AFTER HOURS -->
 <section id="afterhours">
   <div class="sh"><span class="sn">07</span><h2>After Hours Support Layer</h2></div>
-  <p>Active between 6PMâ8AM ET and all day weekends. Detected automatically by the backend. Hot leads are flagged in Supabase (<code>is_after_hours = true</code>) and surfaced in the morning briefing via <code>GET /admin/briefing</code>.</p>
+  <p>Active between 6PM–8AM ET and all day weekends. Detected automatically by the backend. Hot leads are flagged in Supabase (<code>is_after_hours = true</code>) and surfaced in the morning briefing via <code>GET /admin/briefing</code>.</p>
   <div class="code-block">
     <div class="code-label">After Hours Capture Message</div>
-    <pre>"Know that our team is currently offline â I will make sure this reaches
+    <pre>"Know that our team is currently offline — I will make sure this reaches
 them first thing. Can I confirm your name, best contact, and a one-line
 summary of what you are working on so nothing gets lost?"</pre>
   </div>
@@ -426,8 +390,8 @@ Schedule: hit this endpoint at 7AM ET daily via cron or Claude Cowork</pre>
   <table class="dt">
     <thead><tr><th>Product</th><th>Investment</th><th>Output</th></tr></thead>
     <tbody>
-      <tr><td>Mascot Avatar Build</td><td>$997 one-time</td><td>Brand avatar in client's voice and style Â· allotment per phase</td></tr>
-      <tr><td>Full Clone Avatar</td><td>$9,000 (25% down)</td><td>Photorealistic owner/rep Â· voice clone Â· 10 launch videos Â· multilingual Â· unlimited generation Â· 100% client ownership</td></tr>
+      <tr><td>Mascot Avatar Build</td><td>$997 one-time</td><td>Brand avatar in client's voice and style · allotment per phase</td></tr>
+      <tr><td>Full Clone Avatar</td><td>$9,000 (25% down)</td><td>Photorealistic owner/rep · voice clone · 10 launch videos · multilingual · unlimited generation · 100% client ownership</td></tr>
       <tr><td>Additional videos</td><td>$97 / video</td><td>Beyond phase allotment</td></tr>
       <tr><td>Multilingual add-on</td><td>$297 / mo per language</td><td>Spanish included in Full Clone</td></tr>
     </tbody>
@@ -442,7 +406,7 @@ Schedule: hit this endpoint at 7AM ET daily via cron or Claude Cowork</pre>
       <tr><td>Additional (any phase)</td><td>$97 / video</td></tr>
     </tbody>
   </table>
-  <div class="callout info"><span>â¹</span><div class="callout-body"><strong>Full Clone payment schedule</strong>$2,250 at signing Â· $6,750 on final delivery and approval. All assets â likeness, voice, videos â transfer to client ownership on final payment. No platform lock-in.</div></div>
+  <div class="callout info"><span>ℹ</span><div class="callout-body"><strong>Full Clone payment schedule</strong>$2,250 at signing · $6,750 on final delivery and approval. All assets — likeness, voice, videos — transfer to client ownership on final payment. No platform lock-in.</div></div>
 </section>
 
 <!-- SECTION 09 SOCIAL -->
@@ -453,8 +417,8 @@ Schedule: hit this endpoint at 7AM ET daily via cron or Claude Cowork</pre>
     <tbody>
       <tr><td>Additional post beyond phase allotment</td><td>$25 / post</td><td>Any phase</td></tr>
       <tr><td>Additional reel beyond phase allotment</td><td>$97 / reel</td><td>Any phase</td></tr>
-      <tr><td>Trip / Event Micro-Campaign</td><td>$497</td><td>Phase 1 Entry â event bursts</td></tr>
-      <tr><td>Grand Opening 6-Week Ramp</td><td>$2,997</td><td>Phase 2 Growth â new location launch</td></tr>
+      <tr><td>Trip / Event Micro-Campaign</td><td>$497</td><td>Phase 1 Entry — event bursts</td></tr>
+      <tr><td>Grand Opening 6-Week Ramp</td><td>$2,997</td><td>Phase 2 Growth — new location launch</td></tr>
       <tr><td>Seasonal Pre-Sell Campaign</td><td>Included in Phase 3 Authority</td><td>Off-season cash flow content</td></tr>
       <tr><td>YouTube Channel Launch + SEO</td><td>Included in Velocity Layer</td><td>Long-form authority content</td></tr>
     </tbody>
@@ -465,27 +429,27 @@ Schedule: hit this endpoint at 7AM ET daily via cron or Claude Cowork</pre>
 <section id="golive">
   <div class="sh"><span class="sn">10</span><h2>Go-Live Checklist</h2></div>
   <ul class="checklist">
-    <li>Backend deployed â /health returns 200</li>
+    <li>Backend deployed — /health returns 200</li>
     <li>Supabase schema applied (docs/schema.sql)</li>
-    <li>All .env vars set â Anthropic, Supabase, GHL, notifications</li>
+    <li>All .env vars set — Anthropic, Supabase, GHL, notifications</li>
     <li>ManyChat Pro active ($15/mo)</li>
     <li>Instagram Business account connected to ManyChat</li>
     <li>External Request block configured with webhook URL + secret</li>
-    <li>Opener flow tested â is_opener=true returns correct DM</li>
+    <li>Opener flow tested — is_opener=true returns correct DM</li>
     <li>Trigger keyword set to specific post (never Any Post)</li>
-    <li>3â4 public reply variations added to ManyChat</li>
+    <li>3–4 public reply variations added to ManyChat</li>
     <li>ManyChat notification configured for Zack/Joel on handoff</li>
     <li>All 5 persona tests run and passed (see Section 11)</li>
   </ul>
   <h3>Post-Launch Verification (First 10 Minutes)</h3>
   <ul class="checklist">
-    <li>Comment trigger keyword from personal account â DM arrives in &lt;5 seconds</li>
+    <li>Comment trigger keyword from personal account — DM arrives in &lt;5 seconds</li>
     <li>Public reply visible on the comment</li>
     <li>Claude opening message: no exclamation points, no filler, RSD voice confirmed</li>
-    <li>Phase 1/2/3 language used â no reef-themed names</li>
+    <li>Phase 1/2/3 language used — no reef-themed names</li>
     <li>API call registering at console.anthropic.com under correct key</li>
     <li>Conversation record created in Supabase conversations table</li>
-    <li>Human handoff notification fires on booking intent â email/SMS received</li>
+    <li>Human handoff notification fires on booking intent — email/SMS received</li>
     <li>GHL contact created on qualified or handoff status</li>
   </ul>
 </section>
@@ -496,11 +460,11 @@ Schedule: hit this endpoint at 7AM ET daily via cron or Claude Cowork</pre>
   <table class="dt">
     <thead><tr><th>Persona</th><th>Comment</th><th>DM Opener</th><th>Expected</th></tr></thead>
     <tbody>
-      <tr><td><strong>A â Qualified Commercial</strong></td><td>TOUR</td><td>"I manage a 40,000 sq ft office complex in Richmond. Need full documentation for a lease renewal package."</td><td>GRAVITY â budget confirmed â Calendly offered â GHL contact created</td></tr>
-      <tr><td><strong>B â Unqualified / Casual</strong></td><td>TOUR</td><td>"Just curious what this costs. I have a small apartment."</td><td>Brief honest answer, no Calendly push, clean close</td></tr>
-      <tr><td><strong>C â Avatar / Content Scale</strong></td><td>AVATAR</td><td>"I can't keep up with content. I need something that posts for me."</td><td>Avatar + social pack positioning â handoff if ready â Phase 2+ recommended</td></tr>
-      <tr><td><strong>D â After-Hours Missed Leads</strong></td><td>AFTER5</td><td>"We miss calls every evening after we close at 5."</td><td>After-hours AI agent + Operations Authority Layer â handoff alert fires</td></tr>
-      <tr><td><strong>E â Bot Check</strong></td><td>TOUR</td><td>"Wait â am I talking to a real person?"</td><td>Honest disclosure + offer to connect team member â no continued conversation</td></tr>
+      <tr><td><strong>A — Qualified Commercial</strong></td><td>TOUR</td><td>"I manage a 40,000 sq ft office complex in Richmond. Need full documentation for a lease renewal package."</td><td>GRAVITY → budget confirmed → Calendly offered → GHL contact created</td></tr>
+      <tr><td><strong>B — Unqualified / Casual</strong></td><td>TOUR</td><td>"Just curious what this costs. I have a small apartment."</td><td>Brief honest answer, no Calendly push, clean close</td></tr>
+      <tr><td><strong>C — Avatar / Content Scale</strong></td><td>AVATAR</td><td>"I can't keep up with content. I need something that posts for me."</td><td>Avatar + social pack positioning → handoff if ready → Phase 2+ recommended</td></tr>
+      <tr><td><strong>D — After-Hours Missed Leads</strong></td><td>AFTER5</td><td>"We miss calls every evening after we close at 5."</td><td>After-hours AI agent + Operations Authority Layer → handoff alert fires</td></tr>
+      <tr><td><strong>E — Bot Check</strong></td><td>TOUR</td><td>"Wait — am I talking to a real person?"</td><td>Honest disclosure + offer to connect team member → no continued conversation</td></tr>
     </tbody>
   </table>
 </section>
@@ -517,7 +481,7 @@ Schedule: hit this endpoint at 7AM ET daily via cron or Claude Cowork</pre>
       <tr><td>Refine system prompt (config/systemPrompt.js)</td><td>Monthly or 50+ convos</td><td>Zack</td></tr>
       <tr><td>Update keyword-to-post pairings</td><td>Per new post</td><td>Joel</td></tr>
       <tr><td>Review avatar video output quality</td><td>Monthly</td><td>Joel</td></tr>
-      <tr><td>Log DM â Calendly conversion rate (Supabase v_conversion_summary)</td><td>Monthly</td><td>Zack</td></tr>
+      <tr><td>Log DM → Calendly conversion rate (Supabase v_conversion_summary)</td><td>Monthly</td><td>Zack</td></tr>
       <tr><td>Check Supabase conversation volume vs. free tier limits</td><td>Monthly</td><td>Zack</td></tr>
     </tbody>
   </table>
@@ -528,48 +492,48 @@ Schedule: hit this endpoint at 7AM ET daily via cron or Claude Cowork</pre>
   <div class="sh"><span class="sn amber">13</span><h2>Build Progress & Status</h2></div>
 
   <div class="progress-header">
-    <div class="ph-label">Linear Project â RSD Team</div>
-    <div class="ph-title">RSD IG DM Agent â Instagram Automation System</div>
-    <div class="ph-sub">Custom Node.js backend Â· Phase naming updated Â· 7 issues tracked Â· Target: June 30, 2026</div>
+    <div class="ph-label">Linear Project — RSD Team</div>
+    <div class="ph-title">RSD IG DM Agent — Instagram Automation System</div>
+    <div class="ph-sub">Custom Node.js backend · Phase naming updated · 7 issues tracked · Target: June 30, 2026</div>
     <div class="ph-links">
-      <a href="https://linear.app/zdj-ventures/project/rsd-ig-dm-agent-instagram-automation-system-095855426c12" class="ph-link linear" target="_blank">â View in Linear</a>
-      <a href="https://github.com/ZDJ-VENTURES888/rsd-internal" class="ph-link github" target="_blank">â¥ GitHub Repo</a>
+      <a href="https://linear.app/zdj-ventures/project/rsd-ig-dm-agent-instagram-automation-system-095855426c12" class="ph-link linear" target="_blank">↗ View in Linear</a>
+      <a href="https://github.com/ZDJ-VENTURES888/rsd-internal" class="ph-link github" target="_blank">⌥ GitHub Repo</a>
     </div>
   </div>
 
   <div class="build-progress-bar">
-    <div class="bp-label"><span>Overall Build Completion</span><strong>14% â Infrastructure In Progress</strong></div>
+    <div class="bp-label"><span>Overall Build Completion</span><strong>14% — Infrastructure In Progress</strong></div>
     <div class="bp-track"><div class="bp-fill" style="width:14%"></div></div>
   </div>
 
-  <h3>Linear Issues â Build Roadmap</h3>
+  <h3>Linear Issues — Build Roadmap</h3>
   <div class="issue-grid">
-    <div class="issue-card in-progress"><div class="ic-id">RSD-42</div><div class="ic-title">Infrastructure Setup - Supabase schema + Express server</div><div class="ic-status in-progress">â³ In Progress</div><div class="ic-priority urgent">Urgent</div></div>
-    <div class="issue-card todo"><div class="ic-id">RSD-43</div><div class="ic-title">Claude Conversation Service - GRAVITY framework</div><div class="ic-status todo">â Todo</div><div class="ic-priority urgent">Urgent</div></div>
-    <div class="issue-card todo"><div class="ic-id">RSD-44</div><div class="ic-title">ManyChat Webhook Integration</div><div class="ic-status todo">â Todo</div><div class="ic-priority urgent">Urgent</div></div>
-    <div class="issue-card todo"><div class="ic-id">RSD-45</div><div class="ic-title">HighLevel CRM Integration</div><div class="ic-status todo">â Todo</div><div class="ic-priority high">High</div></div>
-    <div class="issue-card todo"><div class="ic-id">RSD-46</div><div class="ic-title">Deploy + ManyChat External Request</div><div class="ic-status todo">â Todo</div><div class="ic-priority high">High</div></div>
-    <div class="issue-card todo"><div class="ic-id">RSD-47</div><div class="ic-title">Persona Testing - all 5 scripts</div><div class="ic-status todo">â Todo</div><div class="ic-priority high">High</div></div>
-    <div class="issue-card todo"><div class="ic-id">RSD-48</div><div class="ic-title">Monitoring Setup</div><div class="ic-status todo">â Todo</div><div class="ic-priority medium">Medium</div></div>
+    <div class="issue-card in-progress"><div class="ic-id">RSD-42</div><div class="ic-title">Infrastructure Setup - Supabase schema + Express server</div><div class="ic-status in-progress">⟳ In Progress</div><div class="ic-priority urgent">Urgent</div></div>
+    <div class="issue-card todo"><div class="ic-id">RSD-43</div><div class="ic-title">Claude Conversation Service - GRAVITY framework</div><div class="ic-status todo">○ Todo</div><div class="ic-priority urgent">Urgent</div></div>
+    <div class="issue-card todo"><div class="ic-id">RSD-44</div><div class="ic-title">ManyChat Webhook Integration</div><div class="ic-status todo">○ Todo</div><div class="ic-priority urgent">Urgent</div></div>
+    <div class="issue-card todo"><div class="ic-id">RSD-45</div><div class="ic-title">HighLevel CRM Integration</div><div class="ic-status todo">○ Todo</div><div class="ic-priority high">High</div></div>
+    <div class="issue-card todo"><div class="ic-id">RSD-46</div><div class="ic-title">Deploy + ManyChat External Request</div><div class="ic-status todo">○ Todo</div><div class="ic-priority high">High</div></div>
+    <div class="issue-card todo"><div class="ic-id">RSD-47</div><div class="ic-title">Persona Testing - all 5 scripts</div><div class="ic-status todo">○ Todo</div><div class="ic-priority high">High</div></div>
+    <div class="issue-card todo"><div class="ic-id">RSD-48</div><div class="ic-title">Monitoring Setup</div><div class="ic-status todo">○ Todo</div><div class="ic-priority medium">Medium</div></div>
   </div>
 
   <h3>Tech Stack</h3>
   <div class="stack-grid">
-    <div class="stack-card"><div class="sc-icon">ð¢</div><div class="sc-name">Node.js + Express</div><div class="sc-role">Webhook server</div></div>
-    <div class="stack-card"><div class="sc-icon">ð¤</div><div class="sc-name">Claude API</div><div class="sc-role">GRAVITY framework</div></div>
-    <div class="stack-card"><div class="sc-icon">ð</div><div class="sc-name">Supabase</div><div class="sc-role">Conversation state</div></div>
-    <div class="stack-card"><div class="sc-icon">ð²</div><div class="sc-name">ManyChat Pro</div><div class="sc-role">IG interface</div></div>
-    <div class="stack-card"><div class="sc-icon">ð§</div><div class="sc-name">HighLevel CRM</div><div class="sc-role">Pipeline sync</div></div>
-    <div class="stack-card"><div class="sc-icon">ð¡</div><div class="sc-name">Twilio / Email</div><div class="sc-role">Handoff alerts</div></div>
+    <div class="stack-card"><div class="sc-icon">🟢</div><div class="sc-name">Node.js + Express</div><div class="sc-role">Webhook server</div></div>
+    <div class="stack-card"><div class="sc-icon">🤖</div><div class="sc-name">Claude API</div><div class="sc-role">GRAVITY framework</div></div>
+    <div class="stack-card"><div class="sc-icon">🗄</div><div class="sc-name">Supabase</div><div class="sc-role">Conversation state</div></div>
+    <div class="stack-card"><div class="sc-icon">📲</div><div class="sc-name">ManyChat Pro</div><div class="sc-role">IG interface</div></div>
+    <div class="stack-card"><div class="sc-icon">🔧</div><div class="sc-name">HighLevel CRM</div><div class="sc-role">Pipeline sync</div></div>
+    <div class="stack-card"><div class="sc-icon">📡</div><div class="sc-name">Twilio / Email</div><div class="sc-role">Handoff alerts</div></div>
   </div>
 
-  <div class="callout success" style="margin-top:24px;"><span>â</span><div class="callout-body"><strong>Next Action â Zack</strong>Push <code>rsd-ig-dm-backend/</code> to GitHub â connect to Railway or Render â set .env vars â run schema.sql â hit /health.</div></div>
+  <div class="callout success" style="margin-top:24px;"><span>✓</span><div class="callout-body"><strong>Next Action — Zack</strong>Push <code>rsd-ig-dm-backend/</code> to GitHub → connect to Railway or Render → set .env vars → run schema.sql in Supabase → hit /health.</div></div>
 </section>
 
 </div>
 <footer>
-  <div><div class="fb">Real Space Digital</div><div style="margin-top:4px;">info@realspacedigital.net Â· (434) 215-4276 Â· realspacedigital.net</div></div>
-  <div style="text-align:right;">Internal Build Doc v2.0 Â· June 2026 Â· Backend Build Active<br>zdj-ventures888.github.io/rsd-internal</div>
+  <div><div class="fb">Real Space Digital</div><div style="margin-top:4px;">info@realspacedigital.net · (434) 215-4276 · realspacedigital.net</div></div>
+  <div style="text-align:right;">Internal Build Doc v2.0 · June 2026 · Backend Build Active<br>zdj-ventures888.github.io/rsd-internal</div>
 </footer>
 </main>
 <script>
@@ -588,3 +552,21 @@ secs.forEach(s=>observer.observe(s));
 </script>
 </body>
 </html>
+�]H0��Y\��Y�H\�ܞO�]���]���]��\��H��X��X�\���]��\��H���ZX�ۈ��'���]��]��\��H���[�[YH��X[�P�]���]��]��\��H���\��H��Q�[�\��X�H0��H[]�\�H0��	MK�[��]���]���]��\��H��X��X�\���]��\��H���ZX�ۈ��'�)��]��]��\��H���[�[YH��Y�]�[ԓO�]��]��\��H���\��H���۝X��[��0��\[[�H0����\��]���]���]��\��H��X��X�\���]��\��H���ZX�ۈ��'��O�]��]��\��H���[�[YH���[[��[XZ[�]��]��\��H���\��H��[�ٙ�[\��0��[ܛ�[����YY�[���]���]����]����ϔ�KQ\�H�\�\]Z\�]\��ς�]��\��H��\�\KYܚY���]��\��H��\�\KZ][HۙKZ][H���]��\��H�KZX�ۈ���$��]���]��\��H�K]^����ۙϐ�X��[���O���ۙϏ�[��[M�[\�ܚ][�8�%�\��\���]\��\��X�\�][���[���]����]���]��\��H��\�\KZ][HۙKZ][H���]��\��H�KZX�ۈ���$��]���]��\��H�K]^����ۙϔ�\X�\�H��[XO���ۙϏ�[��������[XK��[�XYH8�%�[�[��SY]܏��[���]����]���]��\��H��\�\KZ][HۙKZ][H���]��\��H�KZX�ۈ���$��]���]��\��H�K]^����ۙϓ[�X\��ڙX����ۙϏ�[���\��Y\�ܙX]Y�]\[�[��H�Z[���[���]����]���]��\��H��\�\KZ][HۙKZ][H���]��\��H�KZX�ۈ���$��]���]��\��H�K]^����ۙϔ\�H�[Z[��\]Y���ۙϏ�[��\�HH[��H�\�H�ܛ���\�H�]]ܚ]H��Y��]��[���]����]���]��\��H��\�\KZ][H[�[��Z][H���]��\��H�KZX�ۈ������]���]��\��H�K]^����ۙϑ\�H��Z[�^Kԙ[�\����ۙϏ�[��\���]X�8����ۛ�X��\�H]�ܛO��[���]����]���]��\��H��\�\KZ][H[�[��Z][H���]��\��H�KZX�ۈ������]���]��\��H�K]^����ۙϔ�]�[���\�XX�\����ۙϏ�[��[���X��^H0���\X�\�HT�
+��^H0���TH�^H0���Xܙ]���[���]����]���]��\��H��\�\KZ][H[�[��Z][H���]��\��H�KZX�ۈ������]���]��\��H�K]^����ۙϓX[�P�]^\��[�\]Y\����ۙϏ�[���ۙ�Y�\�H������]�X����T�
+��\�ۜ�H�Y[���[���]����]���]��\��H��\�\KZ][H[�[��Z][H���]��\��H�KZX�ۈ������]���]��\��H�K]^����ۙύH\��ۘH\�����ۙϏ�[��[]\�\���Y�ܙH�[�[���]�H�����[���]����]����]����ϑ\�[X]Y[۝H���]��[O�ς�]��\��H����X�\���]��\��H�؋[X�[��L�۝�\��][ۜ��[��]��]��\��H�؋]�X�ȏ�]��\��H�؋Y�[��[OH��Y�IH���]���]��]��\��H�؋]�[������[��]���]���]��\��H����X�\���]��\��H�؋[X�[����۝�\��][ۜ��[��]��]��\��H�؋]�X�ȏ�]��\��H�؋Y�[��[OH��Y��IH���]���]��]��\��H�؋]�[�����[��]���]���]��\��H����X�\���]��\��H�؋[X�[��L�۝�\��][ۜ��[��]��]��\��H�؋]�X�ȏ�]��\��H�؋Y�[��[OH��Y�MIH���]���]��]��\��H�؋]�[���
+�K�[��]���]���]��\��H����X�\���]��\��H�؋[X�[��K�۝�\��][ۜ��[��]��]��\��H�؋]�X�ȏ�]��\��H�؋Y�[��[OH��Y�L	H���]���]��]��\��H�؋]�[���LMK�[��]���]����[OH��۝\�^�N�L����܎��\�K[]]Y
+N�X\��[�]��ȏ�[��Y\ΈX[�P�]��	MH
+��]YHTH����۝��]��
+��Z[�^Kԙ[�\��
+x�$�L��\X�\�H��YHY\��Y��X�Y[���Y��L�۝����[ˏ����]��\��H��[�]�X��\�Ȉ�[OH�X\��[�]���ȏ��[���$���[��]��\��H��[�]X��H����ۙϓ�^X�[ۈ8�%�X�����ۙϔ\���O���ZY�YKX�X��[�����O��H�]�]H�]X��\�8����ۛ�X���Z[�^H܈�[�\�8����]�[���\��8����[���[XK��[[��\X�\�H8���]�X[��ۙ�\�H]�K�[��ۙ�Y�\�HX[�P�]^\��[�\]Y\�[��[�\��ۘHH\���]���]�����X�[ۏ����]������\���]��]��\��H������X[�X�HY�][�]��]��[OH�X\��[�]��ȏ�[����X[�X�YY�][��]0��
+
+�
+H�MKM�͈0���X[�X�YY�][��]�]���]���]��[OH�^X[Yێ��Y�ȏ�[�\��[�Z[�����0���[�H���0���X��[��Z[X�]�O�����]�[�\�\���]X��[�ܜ�Z[�\��[�]���ٛ��\����XZ[����ܚ\���ۜ��X��Y��[Y[��]Y\�T�[X�ܐ[
+	��X�[ۖ�YI�N�ۜ����Y��[Y[��]Y\�T�[X�ܐ[
+	ۘ]�I�N�ۜ�؜�\��\�[�]�[�\��X�[ۓ؜�\��\�[��Y\�O�[��Y\˙�ܑXX�
+[�O�Y�[��\�[�\��X�[��^��˙�ܑXX�
+O���\��\���[[ݙJ	�X�]�I�JN�ۜ�OY��[Y[��]Y\�T�[X�܊�]�V��Y�H���[��\��]�YH�X
+NY�JXK��\��\��Y
+	�X�]�I�NB�JNK��\��������X\��[���LL	HM�	H	�JN�X�˙�ܑXX�
+�O�؜�\��\��؜�\��J�JN��ܚ\��؛�O���[�
