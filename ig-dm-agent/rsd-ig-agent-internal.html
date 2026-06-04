@@ -311,13 +311,34 @@ footer{width:100%;max-width:920px;margin:0 auto 60px;padding:24px 60px 0;border-
   <div class="sh"><span class="sn">03</span><h2>System Prompt v2.0</h2></div>
   <p>The system prompt lives in <code>config/systemPrompt.js</code> in the custom backend. It is injected automatically on every Claude API call. Phase 1 Entry / Phase 2 Growth / Phase 3 Authority naming is used throughout — no reef-themed names.</p>
   <div class="callout warn"><span>⚠</span><div class="callout-body"><strong>Priority if truncated</strong>Voice Rules and ICP Routing must remain intact.</div></div>
-  <div class="code-block"><div class="code-label">Claude Configuration — Custom Backend</div><pre>Model: claude-sonnet-4-5 | Max Tokens: 1024 | Max Turns: 8</pre></div>
+<table class="dt">
+    <thead><tr><th>Section</th><th>Purpose</th><th>Priority</th></tr></thead>
+    <tbody>
+      <tr><td>Voice &amp; Tone</td><td>Forbidden phrases, sentence style, energy calibration</td><td>Critical</td></tr>
+      <tr><td>Offer Set</td><td>All services with pricing anchors + Phase 1/2/3 names</td><td>Critical</td></tr>
+      <tr><td>ICP Routing</td><td>Match lead to right entry offer and phase path</td><td>Critical</td></tr>
+      <tr><td>GRAVITY Framework</td><td>5-question qualification over 3–5 exchanges</td><td>Critical</td></tr>
+      <tr><td>Objection Handling</td><td>7 pre-scripted responses in RSD voice</td><td>High</td></tr>
+      <tr><td>Human Handoff Trigger</td><td>Stop conditions and handoff message</td><td>Critical</td></tr>
+      <tr><td>After Hours Protocol</td><td>6PM–8AM ET and weekend coverage</td><td>High</td></tr>
+      <tr><td>JSON Response Format</td><td>Structured output for backend state tracking</td><td>Critical (backend)</td></tr>
+      <tr><td>Hard Limits</td><td>What Claude must never do</td><td>Critical</td></tr>
+    </tbody>
+  </table>
+    <div class="code-block"><div class="code-label">Claude Configuration — Custom Backend</div><pre>Model: claude-sonnet-4-5 | Max Tokens: 1024 | Max Turns: 8</pre></div>
 </section>
 
 <!-- SECTION 04 -->
 <section id="manychat">
   <div class="sh"><span class="sn">04</span><h2>ManyChat Setup</h2></div>
   <div class="callout success"><span>✓</span><div class="callout-body"><strong>Custom Backend Mode</strong>ManyChat handles IG connection + DM delivery only. Use External Request blocks — not native Claude integration.</div></div>
+  <div class="steps">
+    <div class="step"><div class="snum">0</div><div class="sbody"><div class="stitle">Account Readiness — Complete First</div><ul class="checklist"><li>@realspace.digital confirmed as Instagram Business account</li><li>Instagram linked to active Facebook Page with Admin access</li><li>Backend server deployed and /health returning 200</li><li>Supabase schema applied (docs/schema.sql)</li><li>All .env variables set on server</li></ul></div></div>
+    <div class="step"><div class="snum">1</div><div class="sbody"><div class="stitle">Create ManyChat Account + Connect IG</div><p>manychat.com → Get Started → Instagram as primary channel → connect Facebook Page → grant all permissions → upgrade to Pro ($15/mo).</p></div></div>
+    <div class="step"><div class="snum">2</div><div class="sbody"><div class="stitle">Build Automation Flow</div><p>Automation → New Automation → Trigger: User Comments → keyword → Specific Post. Enable Public Reply (4 variations). Add 1–2s delay block.</p></div></div>
+    <div class="step"><div class="snum">3</div><div class="sbody"><div class="stitle">Add Opener Block (is_opener = true)</div><p>First DM sent after keyword trigger. External Request block with is_opener: true. Response field <code>reply</code> → send as DM text.</p></div></div>
+    <div class="step"><div class="snum">4</div><div class="sbody"><div class="stitle">Configure External Request Loop</div><p>Wait for User Input → External Request → Send DM → check <code>handoff_triggered</code> → if true: exit loop → else: loop back to Wait.</p></div></div>
+  </div>
   <div class="code-block"><div class="code-label">External Request Settings</div><pre>URL: https://your-domain.com/webhook/manychat
 Method: POST
 Header: x\"webhook-secret: {your_secret}
@@ -341,20 +362,11 @@ Save: rsd_reply ← reply | rsd_status ← status | rsd_handoff ← handoff_trig
 </section>
 
 <!-- SECTIONS 06-12 -->
-<section id="rapid"><div class="sh"><span class="sn">06</span><h2>Rapid Response Live Agent</h2></div><p>Under 3-second response, 24/7, with human handoff within 60 minutes on qualified leads during business hours. After-hours detection is automatic via <code>utils/afterHours.js</code>.</p></section>
-
-<section id="afterhours"><div class="sh"><span class="sn">07</span><h2>After Hours Support Layer</h2></div><p>Active 6PM–8AM ET and all day weekends. Hot leads flagged in Supabase and surfaced via <code>GET /admin/briefing</code>.</p><div class="code-block"><div class="code-label">After Hours Capture</div><pre>"Know that our team is currently offline — I will make sure this reaches them first thing. Can I confirm your name, best contact, and a one-line summary of what you are working on so nothing gets lost?"</pre></div></section>
-
-<section id="avatar"><div class="sh"><span class="sn">08</span><h2>Avatar & Infinite Scale Media</h2></div><table class="dt"><thead><tr><th>Product</th><th>Investment</th><th>Output</th></tr></thead><tbody><tr><td>Mascot Avatar Build</td><td>$997 one-time</td><td>Brand avatar in client's voice · allotment per phase</td></tr><tr><td>Full Clone Avatar</td><td>$9,000 (25% down)</td><td>Photorealistic · voice clone · 10 launch videos · limitless generation · 100% client ownership</td></tr><tr><td>Additional videos</td><td>$97 / video</td><td>Beyond phase allotment</td></tr></tbody></table><h3>Avatar Video Allotments by Phase</h3><table class="dt"><thead><tr><th>Phase</th><th>Videos / Month</th></tr></thead><tbody><tr><td>Phase 1 Entry</td><td>1</td></tr><tr><td>Phase 2 Growth</td><td>4</td></tr><tr><td>Phase 3 Authority</td><td>8</td></tr><tr><td>Additional (any phase)</td><td>$97 / video</td></tr></tbody></table></section>
-
-<section id="social"><div class="sh"><span class="sn">09</span><h2>Social Media Packs</h2></div><table class="dt"><thead><tr><th>Pack</th><th>Investment</th><th>Pair With</th></tr></thead><tbody><tr><td>Additional post beyond phase allotment</td><td>$25 / post</td><td>Any phase</td></tr><tr><td>Additional reel beyond phase allotment</td><td>$97 / reel</td><td>Any phase</td></tr><tr><td>Trip / Event Micro-Campaign</td><td>$497</td><td>Phase 1 Entry — event bursts</td></tr><tr><td>Grand Opening 6-Week Ramp</td><td>$2,997</td><td>Phase 2 Growth — new location launch</td></tr></tbody></table></section>
-
-<section id="golive"><div class="sh"><span class="sn">10</span><h2>Go-Live Checklist</h2></div><ul class="checklist"><li>Backend deployed — /health returns 200</li><li>Supabase schema applied (docs/schema.sql)</li><li>All .env vars set</li><li>ManyChat Pro active ($15/mo)</li><li>External Request block configured</li><li>All 5 persona tests run and passed</li></ul></section>
-
-<section id="personas"><div class="sh"><span class="sn">11</span><h2>Persona Test Scripts</h2></div><table class="dt"><thead><tr><th>Persona</th><th>Comment</th><th>Expected</th></tr></thead><tbody><tr><td><strong>A — Qualified Commercial</strong></td><td>TOUR</td><td>GRAVITY ₒ budget confirmed ₒ Calendly offered ₒ GHL contact created</td></tr><tr><td><strong>B — Unqualified</strong></td><td>TOUR</td><td>Brief honest answer, no Calendly push, clean close</td></tr><tr><td><strong>C — Avatar Scale</strong></td><td>AVATAR</td><td>Avatar + social pack positioning</td></tr><tr><td><strong>D — After-Hours</strong></td><td>AFTER5</td><td>After-hours AI agent + Ops Authority Layer</td></tr><tr><td><strong>E — Bot Check</strong></td><td>TOUR</td><td>Honest AI disclosure + offer to connect team</td></tr></tbody></table></section>
-
-<section id="maintenance"><div class="sh"><span class="sn">12</span><h2>Maintenance Schedule</h2></div><table class="dt"><thead><tr><th>Task</th><th>Frequency</th><th>Owner</th></tr></thead><tbody><tr><td>Review ManyChat conversation logs</td><td>Weekly</td><td>Zack / Joel</td></tr><tr><td>Check Claude API spend</td><td>Weekly</td><td>Zack</td></tr><tr><td>Review GET /admin/briefing for missed leads</td><td>Daily (7AM)</td><td>Zack</td></tr><tr><td>Refine system prompt (config/systemPrompt.js)</td><td>Monthly or 50+ convos</td><td>Zack</td></tr><tr><td>Update keyword-to-post pairings</td><td>Per new post</td><td>Joel</td></tr></tbody></table></section>
-tr><td>Response latency target</td><td>&lt;3 seconds</td></tr>
+<section id="rapid"><div class="sh"><span class="sn">06</span><h2>Rapid Response Live Agent</h2></div><p>Under 3-second response, 24/7, with human handoff within 60 minutes on qualified leads during business hours. After-hours detection is automatic via <code>utils/afterHours.js</code>.</p>
+  <table class="dt">
+    <thead><tr><th>Setting</th><th>Value</th></tr></thead>
+    <tbody>
+      <tr><td>Response latency target</td><td>&lt;3 seconds</td></tr>
       <tr><td>Max turns</td><td>8 (enforced by backend — not ManyChat)</td></tr>
       <tr><td>After-hours detection</td><td>Automatic — ET timezone · 8AM–6PM Mon–Fri</td></tr>
       <tr><td>Human handoff SLA</td><td>60 min during business hours</td></tr>
@@ -363,7 +375,6 @@ tr><td>Response latency target</td><td>&lt;3 seconds</td></tr>
   </table>
 </section>
 
-<!-- SECTION 07 AFTER HOURS -->
 <section id="afterhours">
   <div class="sh"><span class="sn">07</span><h2>After Hours Support Layer</h2></div>
   <p>Active between 6PM–8AM ET and all day weekends. Detected automatically by the backend. Hot leads are flagged in Supabase (<code>is_after_hours = true</code>) and surfaced in the morning briefing via <code>GET /admin/briefing</code>.</p>
